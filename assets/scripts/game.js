@@ -4,23 +4,15 @@
 let playerToken = 'x'
 // let countX = 0
 const playerTokenWin = 0
-let count = 0
 let oWin = 0
 let xWin = 0
 
-// Within any element with class `.gameBoard`, listen for clicks on any element
-// with a class `.square`.
-// an event listener attached to the global object will call its handler prior to a listener that has been attached to the element itself.
 $('.gameBoard').on('click', ".square:not('.square-x, .square-o')", function (event) {
-  // alert('Hello World!') -- testing click event
-  // adding a class defined in our css to the currentTarget and square-x and square-o is defined in my css.
   const $square = $(event.currentTarget)
   $square.addClass('square-' + playerToken)
-  // $square.is('square-' + playerToken) /* might take out */
+
   if (checkIfPlayerWonX('square-' + playerToken)) {
     setMessage('X' + 'has Won!')
-    count = xWin++ // left off here --------
-    // $('#playerTokenWinX').text(xWin)
   } else if (checkIfPlayerWonO('square-' + playerToken)) {
     setMessage('O' + 'has Won!')
   } else if (playerToken === 'x') {
@@ -39,7 +31,7 @@ const setMessage = function (msg) {
 
 const checkIfPlayerWonX = function (symbol) {
   if ($('#r1').hasClass('square-x') && $('#r2').hasClass('square-x') && $('#r3').hasClass('square-x')) {
-    return true //  return xWin
+    return xWin //  return xWin
   } else {
     return false
   }
@@ -47,11 +39,20 @@ const checkIfPlayerWonX = function (symbol) {
 
 const checkIfPlayerWonO = function (symbol) {
   if ($('#r1').hasClass('square-o') && $('#r2').hasClass('square-o') && $('#r3').hasClass('square-o')) {
-    return true //  return xWin
+    return oWin //  return xWin
   } else {
     return false
   }
 }
+
+/* let winner = function () {
+ if(!winner) {
+   //check to see if there is a tie
+   if(numMoves == 9)
+      status.innerHTML = 'Tie Game!';
+ } else {
+   gameOver = true
+} */
 
 function startNewGame () {
   location.reload(true)
