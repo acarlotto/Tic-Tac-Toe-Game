@@ -20,7 +20,7 @@ $('.gameBoard').on('click', ".square:not('.square-x, .square-o')", function (eve
   if (checkIfPlayerWonX('square-' + playerToken)) {
     setMessage('X' + 'has Won!')
     count = xWin++ // left off here --------
-    $('#playerTokenWinX').text(xWin)
+    // $('#playerTokenWinX').text(xWin)
   } else if (checkIfPlayerWonO('square-' + playerToken)) {
     setMessage('O' + 'has Won!')
   } else if (playerToken === 'x') {
