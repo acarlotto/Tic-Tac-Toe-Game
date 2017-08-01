@@ -4,8 +4,9 @@
 let playerToken = 'x'
 // let countX = 0
 const playerTokenWin = 0
-let oWin = 0
+let count = 0
 let xWin = 0
+let oWin = 0
 
 $('.gameBoard').on('click', ".square:not('.square-x, .square-o')", function (event) {
   const $square = $(event.currentTarget)
@@ -31,7 +32,9 @@ const setMessage = function (msg) {
 
 const checkIfPlayerWonX = function (symbol) {
   if ($('#r1').hasClass('square-x') && $('#r2').hasClass('square-x') && $('#r3').hasClass('square-x')) {
-    return xWin //  return xWin
+    alert('X Wins!') //  return xWin
+    count = 0
+    xWin++
   } else {
     return false
   }
@@ -39,11 +42,21 @@ const checkIfPlayerWonX = function (symbol) {
 
 const checkIfPlayerWonO = function (symbol) {
   if ($('#r1').hasClass('square-o') && $('#r2').hasClass('square-o') && $('#r3').hasClass('square-o')) {
-    return oWin //  return xWin
+    alert('oWin') //  return xWin
   } else {
     return false
   }
 }
+
+/* THIS IS THE POSSIBLE SOLUTION TO CHECK FOR TIE const checkForTie = function () {
+  if ($('#r1').hasClass('square-') && $('#r2').hasClass('square-') && $('#r3').hasClass('square-') &&
+  $('#r4').hasClass('square-') && $('#r5').hasClass('square-') && $('#r6').hasClass('square-') && $('#r7').hasClass('square-') &&
+  $('#r8').hasClass('square-') && $('#r9').hasClass('square-')) {
+    alert('Tie Game') //  return xWin
+  } else {
+    return false
+  }
+} */
 
 /* let winner = function () {
  if(!winner) {
@@ -54,8 +67,11 @@ const checkIfPlayerWonO = function (symbol) {
    gameOver = true
 } */
 
-function startNewGame () {
-  location.reload(true)
-}
+document.querySelector('.startNewGame').addEventListener('click', function () {
+  'use strict'
+  window.location.reload()
+}, true)
+// Start the game
+// window.onload = _startGame()
 
 module.exports = true
