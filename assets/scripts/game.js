@@ -17,11 +17,12 @@ $('.gameBoard').on('click', ".square:not('.square-x, .square-o')", function (eve
   const $square = $(event.currentTarget)
   $square.addClass('square-' + playerToken)
   // $square.is('square-' + playerToken) /* might take out */
-  if (checkIfPlayerWon('square-' + playerToken)) {
-    setMessage(playerToken + 'has Won!')
-    // if ($('#playerTokenWin').text(playerTokenWin)
-    // count = xWin++
-    // $('#playerTokenWin').text(xWin)
+  if (checkIfPlayerWonX('square-' + playerToken)) {
+    setMessage('X' + 'has Won!')
+    count = xWin++ // left off here --------
+    $('#playerTokenWinX').text(xWin)
+  } else if (checkIfPlayerWonO('square-' + playerToken)) {
+    setMessage('O' + 'has Won!')
   } else if (playerToken === 'x') {
     playerToken = 'o'
     setMessage(playerToken + '\'s Turn')
@@ -36,8 +37,16 @@ const setMessage = function (msg) {
   document.getElementById('message').innerText = msg
 }
 
-const checkIfPlayerWon = function (symbol) {
+const checkIfPlayerWonX = function (symbol) {
   if ($('#r1').hasClass('square-x') && $('#r2').hasClass('square-x') && $('#r3').hasClass('square-x')) {
+    return true //  return xWin
+  } else {
+    return false
+  }
+}
+
+const checkIfPlayerWonO = function (symbol) {
+  if ($('#r1').hasClass('square-o') && $('#r2').hasClass('square-o') && $('#r3').hasClass('square-o')) {
     return true //  return xWin
   } else {
     return false
