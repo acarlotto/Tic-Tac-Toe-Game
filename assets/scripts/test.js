@@ -28,7 +28,7 @@ $('#game li').click(function(){
 	$("#game li").removeClass('btn-primary')
 	$("#game li").removeClass('btn-info')
   }
-  else if (count == 9)
+  else if (count == 8)
   {
 	alert('Its a tie. It will restart.')
 	$("#game li").text("+");

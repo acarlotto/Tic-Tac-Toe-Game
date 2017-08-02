@@ -9,7 +9,7 @@ let xWin = 0
 let oWin = 0
 
 $('.square').on('click', function () {
-  count = count + 1
+  count = (count + 1)
   $(this).data('click', count)
 })
 
@@ -45,7 +45,7 @@ const checkIfPlayerWon = function (symbol) {
     $('.square').removeClass('disable')
     $('.square').removeClass('square-o')
     $('.square').removeClass('square-x')
-  } else if ($('#r1').hasClass('square-x') && $('#r2').hasClass('square-x') && $('#r3').hasClass('square-x') ||
+  } else if ($('#r1').hasClass('square-o') && $('#r2').hasClass('square-o') && $('#r3').hasClass('square-o') ||
      $('#r4').hasClass('square-o') && $('#r5').hasClass('square-o') && $('#r6').hasClass('square-o') ||
      $('#r7').hasClass('square-o') && $('#r8').hasClass('square-o') && $('#r9').hasClass('square-o') ||
      $('#r1').hasClass('square-x') && $('#r5').hasClass('square-x') && $('#r9').hasClass('square-x') ||
@@ -65,6 +65,7 @@ const checkIfPlayerWon = function (symbol) {
     $('.square').removeClass('disable')
     $('.square').removeClass('square-o')
     $('.square').removeClass('square-x')
+    count = 0
   }
 }
 const setMessage = function (msg) {
