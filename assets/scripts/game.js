@@ -56,7 +56,6 @@ const checkIfPlayerWon = function (symbol) {
     $('#xWin').text(xWin)
     calculateWinsX()
     count = 0
-    let playerToken = 'x'
     return ('square-x')
   } else if ($('#r1').hasClass('square-o') && $('#r2').hasClass('square-o') && $('#r3').hasClass('square-o') ||
      $('#r4').hasClass('square-o') && $('#r5').hasClass('square-o') && $('#r6').hasClass('square-o') ||
@@ -74,7 +73,6 @@ const checkIfPlayerWon = function (symbol) {
     $('#oWin').text(oWin)
     calculateWinsO()
     count = 0
-    let playerToken = 'x'
     return ('square-o')
   } else if (count === 9) {
     $('.square').addClass('.square:before')
@@ -82,8 +80,7 @@ const checkIfPlayerWon = function (symbol) {
     $('.square').removeClass('square-o')
     $('.square').removeClass('square-x')
     count = 0
-    let playerToken = 'x'
-    alert('tie game')
+    alert('tie game!')
   }
 }
 
