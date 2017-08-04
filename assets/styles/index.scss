@@ -4,6 +4,14 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 *, *:before, *:after {
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
  }
+ .content {
+   display: block;
+   margin-right: auto;
+   margin-left: auto;
+   margin-bottom: 50px;
+   padding: 0;
+   width: 400px;
+ }
 
 .gameBoard {
   display: block;
@@ -19,7 +27,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 .row {
   display: block;
   height: 33.33333%;
-  border-top: 2px solid white;
+  border-top: 2px solid #ffffff;
 }
 
 // .row:first-child {
@@ -31,7 +39,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   display: block;
   width: 33.33333%;
   height: 100%;
-  border-left: 2px solid white;
+  border-left: 2px solid #ffffff;
   text-align: center;
 }
 
@@ -56,8 +64,39 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 .square-x:before {
   content: "X";
+  font-family: 'Sedgwick Ave Display', cursive;
+  color: #F3394A;
+  text-transform: uppercase;
 }
 
 .square-o:before {
   content: "O";
+  font-family: 'Sedgwick Ave Display', cursive;
+  color: #052F4C;
+  text-transform: uppercase;
+}
+
+.square-t:before {
+  content: "Tie Game";
+  font-family: 'Sedgwick Ave Display', cursive;
+  color: #052F4C;
+  text-transform: uppercase;
+}
+
+#message {
+  color: #052F4C;
+  align-content: center;
+  text-transform: uppercase;
+}
+
+#message:before {
+  content:" ";
+  color: #052F4C;
+  align-content: center;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: 'Love Ya Like A Sister', cursive;
+  font-size: 60px;
 }
