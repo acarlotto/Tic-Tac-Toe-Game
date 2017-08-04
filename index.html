@@ -8,7 +8,7 @@
 
     <!-- Do not add `link` tags unless you know what you are doing -->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
+      <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister|Sedgwick+Ave+Display|Source+Serif+Pro" rel="stylesheet">
       <!-- Do not add `script` tags unless you know what you are doing -->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
@@ -25,27 +25,22 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="#"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="#">O won <strong id="oWin" class="win_times add-on"> __ </strong> time(s)</a></li>
+        <li class="active"><a href="#">X won <strong id="xWin"> __ </strong> time(s)</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Link</a></li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-          </ul>
-<li><button type="button" id="sign-up" class="btn btn-primary" data-toggle="modal" data-toggle='modal' data-target="#myModal">Sign Up</button></li>
+        <li><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">
+          Sign Up
+        </button></li>
 
+          </ul>
+          <!-- Button trigger modal -->
 
         </li>
       </ul>
@@ -53,11 +48,11 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-      <h2>TIC TAC TOE</h2>
-<h3>testing</h3>
 
+<div class="content">
+<div class="title">TIC TAC TOE</div>
 <div id="message">Start the game!</div>
-
+</div>
   <div class="gameBoard">
   <div class="row">
     <div class="square" id="r1"></div>
@@ -79,15 +74,7 @@
 </div>
 
 
-
-<div class="input-prepend input-append">
-    <span class="add-on win_text">X won</span><strong id="xWin" class="win_times add-on">X</strong><span class="add-on">time(s)</span>
-    </div>
-    <div class="input-prepend input-append">
-    <span class="add-on win_text">X won</span><strong id="oWin" class="win_times add-on">0</strong><span class="add-on">time(s)</span>
-    </div>
-
-<div class="row"><a href="#" id="reset" class="btn-success btn span3" >Restart</a></div></div>
+<div class="content"><a href="#" id="reset" class="btn-success btn span12" >START NEW GAME</a></div></div>
 
 
 
@@ -95,28 +82,60 @@
 
     </body>
 
-    <!-- Button trigger modal -->
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Create an account.</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <form>
-        <input type='text' name="registration" id="registration" placeholder="Resource ID Here">
-      </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Submit</button>
-      </div>
-    </div>
-  </div>
-</div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Play Tic Tac Toe</h4>
+          </div>
+          <div class="modal-body">
+            <form id="signUp">
+              <fieldset>
+                <legend> Sign up for an account</legend>
+                <input type ="text" name="credentials[email]" placeholder="Email">
+                <input type="password" name="credentials[password]" placeholder="Password">
+                <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+                <input type="submit" name="submit" value="Sign Up">
+              </fieldset>
+            </form>
 
+            <h3>Sign In</h3>
+            <div>
+              <form id="signIn">
+                <fieldset>
+                  <legend> Sign In</legend>
+                  <input type="text" name="credentials[email]" placeholder="Email">
+                  <input type="password" name="credentials[password]" placeholder="Password">
+                  <input type="submit" name="submit" value="login">
+                </fieldset>
+              </form>
+              </div>
+
+              <h3>Change Password</h3>
+              <div>
+                <form id="changePassword">
+                  <fieldset>
+                    <legend> Change password below</legend>
+                    <input type="password" name="credentials[password]" placeholder="old password">
+                    <input type="password" name="credentials[password]" placeholder="new password">
+                    <input type="submit" name="submit" value="submit change">
+                  </fieldset>
+                </form>
+                </div>
+
+                <h2>User Search</h2>
+                <form class='' id='user-search'>
+                  <div class="form-group">
+                  </div>
+                  <button type="submit" class="btn btn-default">Get All Users</button>
+                </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 </html>
