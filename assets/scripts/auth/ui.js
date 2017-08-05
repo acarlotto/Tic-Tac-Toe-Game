@@ -4,12 +4,12 @@ const app = require('../app.js')
 
 // remove me before code-along
 const signInSuccess = (data) => {
-  // app.user = data.user
+  app.user = data.user
   console.log(data)
 }
 
 const signUpSuccess = (data) => {
-  // app.user = data.user
+  app.user = data.user
   console.log(data)
 }
 
