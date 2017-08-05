@@ -89,11 +89,15 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   text-transform: uppercase;
 }
 
-#message:before {
+#message::before {
   content:" ";
   color: #052F4C;
   align-content: center;
   text-transform: uppercase;
+}
+
+.reset {
+  content: '';
 }
 
 .title {

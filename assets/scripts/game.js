@@ -1,9 +1,8 @@
 'use strict'
 
-// Player X will start the game
+// Player X will start the game always
 let playerToken = 'x'
-// let countX = 0
-const playerTokenWin = 0
+
 let count = parseInt($(this).data('click')) || 0
 let xWin = 1
 let oWin = 1
@@ -23,22 +22,19 @@ $('.square').on('click', function () {
   $(this).data('click', count)
 })
 
-// let scores = [0, 0]
 $('.gameBoard').on('click', ".square:not('.square-x, .square-o')", function (event) {
   const $square = $(event.currentTarget)
   $square.addClass('square-' + playerToken)
-
-  if (checkIfPlayerWon('square-' + playerToken)) {
-    setMessage('Player' + '  ' + playerToken + ' ' + 'has won the game. Start a new game')
-  } else if (playerToken === 'x') {
+// Swap current player's token and check for win.
+  if (playerToken === 'x') {
     playerToken = 'o'
     setMessage(playerToken + '\'s Turn')
-  } else {
+  } else if (playerToken === 'o') {
     playerToken = 'x'
     setMessage(playerToken + '\'s Turn')
   }
+  checkIfPlayerWon()
 })
-// Swap current player's token
 
 const checkIfPlayerWon = function (symbol) {
   if ($('#r1').hasClass('square-x') && $('#r2').hasClass('square-x') && $('#r3').hasClass('square-x') ||
@@ -49,13 +45,14 @@ const checkIfPlayerWon = function (symbol) {
      $('#r1').hasClass('square-x') && $('#r4').hasClass('square-x') && $('#r7').hasClass('square-x') ||
      $('#r2').hasClass('square-x') && $('#r5').hasClass('square-x') && $('#r8').hasClass('square-x') ||
      $('#r3').hasClass('square-x') && $('#r6').hasClass('square-x') && $('#r9').hasClass('square-x')) {
-    $('.square').addClass('.square:before')
-    $('.square').removeClass('disable')
+    setMessage('Player X has won the game. Start a new game')
+    $('.gameBoard').removeClass('disable')
     $('.square').removeClass('square-o')
     $('.square').removeClass('square-x')
     $('#xWin').text(xWin)
     calculateWinsX()
     count = 0
+    playerToken = 'x'
     return ('square-x')
   } else if ($('#r1').hasClass('square-o') && $('#r2').hasClass('square-o') && $('#r3').hasClass('square-o') ||
      $('#r4').hasClass('square-o') && $('#r5').hasClass('square-o') && $('#r6').hasClass('square-o') ||
@@ -65,22 +62,23 @@ const checkIfPlayerWon = function (symbol) {
      $('#r1').hasClass('square-o') && $('#r4').hasClass('square-o') && $('#r7').hasClass('square-o') ||
      $('#r2').hasClass('square-o') && $('#r5').hasClass('square-o') && $('#r8').hasClass('square-o') ||
      $('#r3').hasClass('square-o') && $('#r6').hasClass('square-o') && $('#r9').hasClass('square-o')) {
-  // alert('O Wins!') //  return xWin
-    $('.square').addClass('.square:before')
-    $('.square').removeClass('disable')
+    setMessage('Player O has won the game. Start a new game')
+    $('.gameBoard').removeClass('disable')
     $('.square').removeClass('square-o')
     $('.square').removeClass('square-x')
     $('#oWin').text(oWin)
     calculateWinsO()
     count = 0
+    playerToken = 'x'
     return ('square-o')
   } else if (count === 9) {
-    $('.square').addClass('.square:before')
-    $('.square').removeClass('disable')
+    setMessage('Tie Game')
+    $('.gameBoard').removeClass('disable')
     $('.square').removeClass('square-o')
     $('.square').removeClass('square-x')
     count = 0
-    alert('tie game')
+    playerToken = 'x'
+    setMessage('tie game')
   }
 }
 
@@ -91,11 +89,13 @@ const setMessage = function (msg) {
 $('#reset').click(function () {
   $('.square').addClass('.square:before')
   $('#message').addClass('#message:before')
-  $('.square').removeClass('disable')
+  $('.gameBoard').removeClass('disable')
   $('.square').removeClass('square-o')
   $('.square').removeClass('square-x')
   $('#message').removeClass('message')
   count = 0
+  playerToken = 'x'
+  setMessage('x\'s Turn')
 })
 
 module.exports = true
