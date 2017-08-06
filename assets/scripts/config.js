@@ -2,7 +2,7 @@
 
 const config = {
   apiOrigins: {
-    production: 'http://tic-tac-toe.wdibos.com/games'
+    production: 'https://ga-wdi-boston.herokuapp.com'
 
   }
 }

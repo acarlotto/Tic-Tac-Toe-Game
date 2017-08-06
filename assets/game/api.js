@@ -5,12 +5,20 @@ const getFormFields = require('../../../lib/get-form-fields.js');
 
 // authApi.signUp(authUi.success, authUi.failure, data);
 
-const signUp = function (data) {
-  console.log(data)
+const addUser = function (data) {
+  //console.log(data)
   return $.ajax({
     url: app.host + '/sign-up/',
+    //headers: { 'header': 'Content-Type: application/json' },
     method: 'POST',
-    data
+    data: {
+      "credentials" : {
+        "email": data.credentials.email,
+        "password": data.credentials.password,
+        "password_confirmation": data.credentials.password
+      }
+    }
+    //crossDomain: true
   })
 }
 
@@ -52,7 +60,7 @@ const changePassword = function (data) {
 };
 
 module.exports = {
-  signUp,
+  addUser,
   signIn,
   signOut,
   changePassword,

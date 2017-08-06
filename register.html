@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic Tac Toe</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="assets/styles/index.scss">
+      <!-- Do not add `link` tags unless you know what you are doing -->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister|Sedgwick+Ave+Display|Source+Serif+Pro" rel="stylesheet">
+
+      <!-- Do not add `script` tags unless you know what you are doing -->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body class="container-fluid">
+      <div id="content">
+        <header>
+            <div class="row">
+              <h1>Tic Tac Toe</h1>
+            </div>
+        </header>
+        <nav>
+          <ul>
+            <li> <a href="javascript:"> Home </a> </li>
+            <li> <a href="javascript:"> Log In </a> </li>
+            <li> <a href="javascript:">Register </a> </li>
+            <li> <a href="javascript:"> Play </a> </li>
+          </ul>
+        </nav>
+          <div class="row">
+            <form id="registration">
+              <h2> Register To Play </h2>
+              <div class="input-group">
+              <label for="username"> Username </label>
+              <input type="text" name="credentials[email]" placeholder="Email">
+              </div>
+              <div class="input-group">
+              <label for="password"> Password </label>
+              <input type="password" name="credentials[password]" placeholder="Password">
+              </div>
+              <div class="input-group">
+              <label for="password-confirm"> Password </label>
+              <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+              </div>
+              <input type="submit" name="submit" class="submit" value="Register">
+            </form>
+        </div>
+    </div>
+    </body>
+</html>

@@ -8,9 +8,16 @@ const signInSuccess = (data) => {
   console.log(data)
 }
 
-const signUpSuccess = (data) => {
+/* const onSignupSuccess = (data) => {
   app.user = data.user
   console.log(data)
+} */
+
+const onSignupSuccess = function () {
+  console.log('Signup Successful!')
+  // $('#content').load('http://localhost:7165/login.html')
+  $('#registration').hide()
+  $('#login').show()
 }
 
 // remove me before code-along
@@ -32,6 +39,7 @@ const failure = (error) => {
 }
 
 module.exports = {
+  onSignupSuccess,
   failure,
   success,
   signInSuccess,

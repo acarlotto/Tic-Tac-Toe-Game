@@ -2,7 +2,7 @@
 
 const gameApi = require('./api.js')
 const gameUi = require('./ui.js')
-const getFormFields = require('../../../lib/get-form-fields')
+const getFormFields = require('../../lib/get-form-fields')
 
 const signIn = function (event) {
   const data = getFormFields(this)
@@ -12,12 +12,14 @@ const signIn = function (event) {
     .catch(gameUi.failure)
 }
 
-const signUp = function (event) {
+// event handler for registration form
+const registerUser = function (event) {
   const data = getFormFields(this)
+  // console.log(data)
   event.preventDefault()
-  gameApi.signUp(data)
-  .then(gameUi.signUpSuccess)
-  .catch(gameUi.failure)
+  gameApi.addUser(data)
+  .then(gameUi.onSignupSuccess)
+  .catch(gameUi.onSignupFailure)
 }
 
 const onGetUsers = function (event) {
@@ -29,7 +31,7 @@ const onGetUsers = function (event) {
 }
 
 module.exports = {
+  registerUser,
   signIn,
-  signUp,
   onGetUsers
 }
