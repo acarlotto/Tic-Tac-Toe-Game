@@ -90,15 +90,22 @@
             <h4 class="modal-title">Play Tic Tac Toe</h4>
           </div>
           <div class="modal-body">
-            <form id="register">
-              <fieldset>
-                <legend> Sign up for an account</legend>
-                <input type ="text" name="credentials[email]" placeholder="Email">
-                <input type="password" name="credentials[password]" placeholder="Password">
-                <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
-                <input type="submit" name="submit" value="Sign Up">
-              </fieldset>
-            </form>
+            <form id="registration">
+             <h2> Register To Play </h2>
+             <div class="input-group">
+             <label for="username"> Username </label>
+             <input type="text" name="credentials[email]" placeholder="Email">
+             </div>
+             <div class="input-group">
+             <label for="password"> Password </label>
+             <input type="password" name="credentials[password]" placeholder="Password">
+             </div>
+             <div class="input-group">
+             <label for="password-confirm"> Password </label>
+             <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+             </div>
+             <input type="submit" name="submit" class="submit" value="Register">
+           </form>
 
             <h3>Sign In</h3>
             <div>
