@@ -1,9 +1,28 @@
-'use strict'
-
 const app = require('../app.js')
-const getFormFields = require('../../../lib/get-form-fields.js');
 
-// authApi.signUp(authUi.success, authUi.failure, data);
+
+const loadLogPage = function () {
+  return $('#content').load('http://localhost:7165/login.html')
+    /* $.ajax({
+    url: 'http://localhost:7165/login.html',
+    method: 'GET',
+    success: function () {
+      $('#container').load('http://localhost:7165/login.html')
+    }
+  }) */
+}
+
+const loadRegPage = function () {
+  return $('#content').load('http://localhost:7165/register.html')
+  /* $.ajax({
+    url: 'http://localhost:7165/register.html',
+    method: 'GET'
+  }) */
+}
+
+const loadGamePage = function () {
+  return $('#content').load('http://localhost:7165/board.html')
+}
 
 const addUser = function (data) {
   //console.log(data)
@@ -18,50 +37,66 @@ const addUser = function (data) {
         "password_confirmation": data.credentials.password
       }
     }
-    //crossDomain: true
   })
 }
 
-const signIn = function (data) {
-  console.log(data)
+const userLogin = function (data) {
+  /*let userInfo = {
+      Hello : "Hello World"
+  }*/
+  //console.log(userInfo)
+  //console.log(data)
   return $.ajax({
     url: app.host + '/sign-in/',
     method: 'POST',
+    data: {
+      "credentials" : {
+        "email": data.credentials.email,
+        "password": data.credentials.password
+    }
+  }
+  })
+}
+
+const passwordReset = function (data) {
+  // console.log(data)
+  return $.ajax({
+    url: app.host + '/change-password/' + app.user.id,
+    headers: {
+      Authorization: 'Token token=' + app.user.token,
+    }
+    method: 'PATCH',
     data
   })
 }
 
-const signOut = function () {
+const userLogout = function () {
   return $.ajax({
-    method: 'DELETE',
     url: app.host + '/sign-out/' + app.user.id,
     headers: {
-      Authorization: 'Token token=' + app.user.token
-    }
+      Authorization: 'Token token=' + app.user.token,
+    },
+    method: 'DELETE'
   })
 }
 
-const index = function () {
+const getGame = function () {
   return $.ajax({
-    url: app.host + '/users',
-    method: 'GET'
-  })
-}
-
-const changePassword = function (data) {
-  return $.ajax({
-    method: 'PATCH',
-    url: app.host + '/change-password/' + app.user.id
+    url: app.host + '/games',
     headers: {
       Authorization: 'Token token=' + app.user.token
     },
-    data: data,
-  });
-};
+    method: 'POST'
+  })
+}
 
 module.exports = {
+  loadLogPage,
+  loadRegPage,
+  loadGamePage,
   addUser,
-  signIn,
-  signOut,
-  changePassword,
-};
+  userLogin,
+  passwordReset,
+  userLogout,
+  getGame
+}

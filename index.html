@@ -107,29 +107,38 @@
              <input type="submit" name="submit" class="submit" value="Register">
            </form>
 
-            <h3>Sign In</h3>
-            <div>
-              <form id="signIn">
-                <fieldset>
-                  <legend> Sign In</legend>
-                  <input type="text" name="credentials[email]" placeholder="Email">
-                  <input type="password" name="credentials[password]" placeholder="Password">
-                  <input type="submit" name="submit" value="login">
-                </fieldset>
-              </form>
-              </div>
+           <div class="row">
+          <form id="login">
+            <h2> Login To Play </h2>
+            <div class="input-group">
+              <label for="username"> Username </label>
+              <input type="text" name="credentials[email]" placeholder="Email">
+            </div>
+            <div class="input-group">
+              <label for="password"> Password </label>
+              <input type="password" name="credentials[password]" placeholder="Password">
+            </div>
+            <input type="submit" name="submit" class="submit" value="Log In">
+          </form>
 
-              <h3>Change Password</h3>
-              <div>
-                <form id="changePassword">
-                  <fieldset>
-                    <legend> Change password below</legend>
-                    <input type="password" name="credentials[password]" placeholder="old password">
-                    <input type="password" name="credentials[password]" placeholder="new password">
-                    <input type="submit" name="submit" value="submit change">
-                  </fieldset>
-                </form>
-                </div>
+
+            <form id="passChange">
+              <h2> Change Password </h2>
+              <div class="input-group">
+                <label for="oldPassword"> Old Password </label>
+                <input type="password" name="passwords[old]" placeholder="Old Password">
+              </div>
+              <div class="input-group">
+                <label for="newPassword"> New Password </label>
+                <input type="password" name="passwords[new]" placeholder="New Password">
+              </div>
+              <input type="submit" name="submit" class="submit" value="Change Password">
+            </form>
+            <button class="btn" id="log-out"> Log Out </button>
+
+          </div>
+
+
 
                 <h2>User Search</h2>
                 <form class='' id='user-search'>
