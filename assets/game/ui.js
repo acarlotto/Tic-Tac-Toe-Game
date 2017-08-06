@@ -80,9 +80,18 @@ const onGameFail = function (error) {
   $('main').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + error + ' </p></div>')
 }
 
+const onSuccessAllUsers = function (data) {
+  console.table(data.games)
+}
+
+const onErrorAllUsers = function (response) {
+  console.error(response)
+}
 module.exports = {
   // onLoadSuccess,
   // onLoadError,
+  onSuccessAllUsers,
+  onErrorAllUsers,
   onSignupSuccess,
   onSignupFailure,
   onSigninSuccess,

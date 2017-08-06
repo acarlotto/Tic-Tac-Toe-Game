@@ -82,7 +82,32 @@ const playGame = function (event) {
 /*const playGame = function (event) {
 }*/
 
+const onGetUsers = function (event) {
+  event.preventDefault()
+  gameApi.index()
+    .then(gameUi.onSuccess)
+    .catch(gameUi.onError)
+}
+
+const onGetUser = function (event) {
+  event.preventDefault()
+
+  const data = getFormFields(event.target)
+  // what is data??
+  const games = data.games
+// how can we ensure the user input an id?
+  if (games.id.length > 0) {
+    gameApi.show(games.id)
+      .then(gameUi.onSuccess)
+      .catch(gameUi.onError)
+  } else {
+    console.error('Please provide a user id!')
+  }
+}
+
 module.exports = {
+  onGetUser,
+  onGetUsers,
   loadRegistration,
   loadLogin,
   registerUser,
