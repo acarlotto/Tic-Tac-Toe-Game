@@ -1,8 +1,7 @@
 const app = require('../app.js')
 
-
 const loadLogPage = function () {
-  return $('#content').load('http://localhost:7165/login.html')
+  // return $('#content').load('http://localhost:7165/login.html')
     /* $.ajax({
     url: 'http://localhost:7165/login.html',
     method: 'GET',
@@ -13,7 +12,7 @@ const loadLogPage = function () {
 }
 
 const loadRegPage = function () {
-  return $('#content').load('http://localhost:7165/register.html')
+  // return $('#content').load('http://localhost:7165/register.html')
   /* $.ajax({
     url: 'http://localhost:7165/register.html',
     method: 'GET'
@@ -25,7 +24,7 @@ const loadGamePage = function () {
 }
 
 const addUser = function (data) {
-  //console.log(data)
+  // console.log(data)
   return $.ajax({
     url: app.host + '/sign-up/',
     //headers: { 'header': 'Content-Type: application/json' },
@@ -41,11 +40,11 @@ const addUser = function (data) {
 }
 
 const userLogin = function (data) {
-  /*let userInfo = {
+  /* let userInfo = {
       Hello : "Hello World"
-  }*/
-  //console.log(userInfo)
-  //console.log(data)
+  } */
+  // console.log(userInfo)
+  // console.log(data)
   return $.ajax({
     url: app.host + '/sign-in/',
     method: 'POST',
@@ -63,8 +62,8 @@ const passwordReset = function (data) {
   return $.ajax({
     url: app.host + '/change-password/' + app.user.id,
     headers: {
-      Authorization: 'Token token=' + app.user.token,
-    }
+      Authorization: 'Token token=' + app.user.token
+    },
     method: 'PATCH',
     data
   })
@@ -104,6 +103,59 @@ const show = function (id) {
   })
 }
 
+const createGame = function (data) {
+  console.log('createGame from api.js ran!')
+  return $.ajax({
+    url: app.host + '/games',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + app.user.token
+    },
+    data
+  })
+}
+
+/* const passwordReset = function (data) {
+  // console.log(data)
+  return $.ajax({
+    url: app.host + '/change-password/' + app.user.id,
+    headers: {
+      Authorization: 'Token token=' + app.user.token
+    },
+    method: 'PATCH',
+    data
+  })
+} */
+
+// delete if game breaks
+const updateGame = function () {
+  return  $.ajax({
+    url: app.host + '/games/' + id,
+    method: 'PATCH'
+  })
+}
+
+const updateMoves = function (index, value, over) {
+  console.log('updateGameState from api.js ran!')
+  console.log(app.user.token)
+  return $.ajax({
+    url: app.host + '/games/' + app.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + app.user.token
+    },
+    data: {
+      'game': {
+        'cell': {
+          'index': index,
+          'value': 'value'
+        },
+        'over': over
+      }
+    }
+  })
+}
+
 module.exports = {
   index,
   show,
@@ -114,5 +166,7 @@ module.exports = {
   userLogin,
   passwordReset,
   userLogout,
-  getGame
+  getGame,
+  createGame,
+  updateMoves
 }

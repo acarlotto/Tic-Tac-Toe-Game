@@ -8,11 +8,14 @@ $(() => {
   setAPIOrigin(location, config)
 })
 
-const gameEvents = require('./game') // was ('./game')
+const gameEvents = require('../game/events')
+const game = require('./game') // was ('./game')
 // use require with a reference to bundle the file and use it in this file
 // const example = require('./example')
 $(() => {
-  $('#signUp').on('submit', gameEvents.signUp)
-  $('#signIn').on('submit', gameEvents.signIn)
-  $('#user-search').on('submit', gameEvents.onGetUsers)
+  $('#registration').on('submit', gameEvents.registerUser)
+  $('#login').on('submit', gameEvents.loginUser)
+  $('#log-out').on('click', gameEvents.logoutUser)
+  $('#passChange').on('submit', gameEvents.resetPassword)
+  $('#reset').on('click', gameEvents.newGame)
 })

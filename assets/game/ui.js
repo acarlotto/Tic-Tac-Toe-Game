@@ -3,81 +3,94 @@
 let app = require('../app.js')
 let user
 
-//let user = {}
-//use file to log success and error messages
-/*const onLoadSuccess = function () {
-  console.log ('Page loaded successfully')
-}*/
-
-/*const onLoadError = function (error) {
-  console.error(error)
-}*/
-
-const onSignupSuccess = function () {
-  console.log("Signup Successful!")
-  $('#content').load('http://localhost:7165/login.html')
-  $('#registration').hide()
-  $('#login').show()
+const displayErrorMessage = (errorText) => {
+  $('#display-error').text('')
+  $('#display-error').show()
+  $('#display-error').text(errorText || 'Unknown error')
+  $('#display-error').delay(3000).fadeOut()
 }
 
-const onSignupFailure = function (error) {
-  $('main').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + error + ' </p></div>')
-  //console.error(error)
+const onSignupSuccess = function () {
+  console.log('Signup Successful!')
+  // $('#registration').hide()
+  // $('#login').show()
+}
+
+// const onSignupFailure = function (error) {
+  // console.error(error)
+// }
+
+const onSignupFailure = (error) => {
+  if (error.status === 400) {
+    console.log('There was problem signing up, please try again!')
+  } else {
+    setMessage()
+  }
 }
 
 const onSigninSuccess = function (data) {
   console.log(app)
   app.user = data.user
-  //console.log (app.user)
-  //console.log("Signin Successful!")
-  $('#login').hide()
-  $('#play-game').show()
-
-  //$('#content').load('http://localhost:7165/loggedin.html')
-
+  console.log('sign in successful')
+  $('#board').show()
 }
 
-const onSigninFailure = function (error) {
-  $('main').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + error + ' </p></div>')
+// const onSigninFailure = function (error) {
+  // console.log('Sign in failed')
+// }
+
+const onSigninFailure = (error) => {
+  if (error.status === 401) {
+    $('main').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + 'Invalid username or password.' + ' </p></div>')
+    console.log('Invalid username or password.')
+  } else {
+    displayErrorMessage()
+  }
+}
+
+const updateGameStatesSuccess = function (data) {
+  app.user = data.user
+  console.log('testing update game states success')
+}
+
+const updateGameStatesFail = function (data) {
+  app.user = data.user
+  console.log('testing update game states fail')
 }
 
 const onResetSuccess = function () {
-  $('main').prepend('<div class="row"> Password Reset Successfully </div>')
-  //$('#content').load('http://localhost:7165/index.html')
+  console.log('Password Reset Successfully')
+  // $('#content').load('http://localhost:7165/index.html')
 }
 
-const onResetFailure = function (error) {
-  $('main').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + error + ' </p></div>')
+const onResetFailure = (error) => {
+  if (error.status === 400) {
+    console.log('Invalid password.')
+  } else {
+    displayErrorMessage()
+  }
 }
 
 const onLogoutSuccess = function () {
   app.user = null
-  $('main').prepend('<div class="row"> Logged out successfully </div>')
+  console.log('User Logged Out')
   $('#board').hide()
-  $('#pause').hide()
-  $('#play-again').hide()
-  $('#log-out').hide()
-  $('#register').show()
-  $('#login-link').show()
-  $('#play-game').show()
-
-  $('#content').load('http://localhost:7165/index.html')
+  // $('#reset div').hide()
+  // $('.gameBoard').hide()
 }
 
 const onLogoutFailure = function (error) {
-  $('main').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + error + ' </p></div>')
 }
 
 const onGameSuccess = function () {
-  $('#play-game').hide()
-  $('#board').show()
-  $('#game-buttons').show()
+  // $('#play-game').hide()
+  // $('#board').show()
+  // $('#game-buttons').show()
 
   // console.log("Game Created!")
 }
 
 const onGameFail = function (error) {
-  $('main').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + error + ' </p></div>')
 }
 
 const onSuccessAllUsers = function (data) {
@@ -86,6 +99,15 @@ const onSuccessAllUsers = function (data) {
 
 const onErrorAllUsers = function (response) {
   console.error(response)
+}
+
+const newGameCreated = (data) => {
+  console.log('createGameSuccess from ui.js ran!')
+  // $('.box').text('')
+  // $('#gameArea').show()
+  // $('.banner-id').text("Let's Play!")
+  console.log(data)
+  //store.game = data.game
 }
 module.exports = {
   // onLoadSuccess,
@@ -101,5 +123,8 @@ module.exports = {
   onLogoutSuccess,
   onLogoutFailure,
   onGameSuccess,
+  updateGameStatesSuccess,
+  updateGameStatesFail,
+  displayErrorMessage,
   onGameFail
 }

@@ -2,10 +2,21 @@
 
 // Player X will start the game always
 let playerToken = 'x'
-
+let over = []
+let value = []
+let index = []
 let count = parseInt($(this).data('click')) || 0
 let xWin = 1
 let oWin = 1
+
+const updateGame = function (over, cell) {
+  if (cell === 'r1') {
+    // value = ($('#r1')on(click, function).html())
+    index = 0
+    over = over
+    gameEvents.updateGameStates(index, value, over)
+  }
+}
 
 const calculateWinsX = function () {
   xWin = xWin + 1
@@ -51,6 +62,7 @@ const checkIfPlayerWon = function (symbol) {
     $('.square').removeClass('square-x')
     $('#xWin').text(xWin)
     calculateWinsX()
+    over = true
     count = 0
     playerToken = 'x'
     return ('square-x')
@@ -68,10 +80,12 @@ const checkIfPlayerWon = function (symbol) {
     $('.square').removeClass('square-x')
     $('#oWin').text(oWin)
     calculateWinsO()
+    over = true
     count = 0
     playerToken = 'x'
     return ('square-o')
   } else if (count === 9) {
+    over = true
     setMessage('Tie Game')
     $('.gameBoard').removeClass('disable')
     $('.square').removeClass('square-o')
@@ -98,4 +112,6 @@ $('#reset').click(function () {
   setMessage('x\'s Turn')
 })
 
-module.exports = true
+module.exports = {
+  updateGame
+}

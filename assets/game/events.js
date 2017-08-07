@@ -4,49 +4,32 @@ const getFormFields = require('../../lib/get-form-fields')
 // event handlers in this file
 
 // event handler for register button
-const loadRegistration = function (event) {
-  event.preventDefault()
-  $('#registration').show()
-  $('#register').hide()
-  $('#login-link').hide()
-  $('#play-game').hide()
-  //.then(gameUi.onLoadSuccess)
-  //.catch(gameUi.onLoadError)
-  //TODO Figure out how to catch and report errors when using Ajax load function
-}
+// const loadRegistration = function (event) {
+  // event.preventDefault()
+// }
 
-//event handler for login button
-const loadLogin = function (event) {
-  event.preventDefault()
-  $('#login').show()
-  $('#register').hide()
-  $('#login-link').hide()
-  $('#play-game').hide()
-  //.then(gameUi.onLoadSuccess)
-  //.catch(gameUi.onLoadError)
-  //TODO Figure out how to catch and report errors when using Ajax load function
-}
+// event handler for login button
+// const loadLogin = function (event) {
+  // event.preventDefault()
+  // }
 
 const loadGame = function (event) {
   event.preventDefault()
   gameApi.loadGamePage()
-  //TODO Figure out how to catch and report errors when using Ajax load function
+  // TODO Figure out how to catch and report errors when using Ajax load function
 }
 
-//event handler for registration form
+// event handler for registration form
 const registerUser = function (event) {
   const data = getFormFields(this)
-  //console.log(data)
   event.preventDefault()
   gameApi.addUser(data)
   .then(gameUi.onSignupSuccess)
   .catch(gameUi.onSignupFailure)
-
 }
 
-//event handler for login form
+// event handler for login form
 const loginUser = function (event) {
-  //console.log(data)
   const data = getFormFields(this)
   event.preventDefault()
   gameApi.userLogin(data)
@@ -55,7 +38,6 @@ const loginUser = function (event) {
 }
 
 const resetPassword = function (event) {
-  //console.log()
   const data = getFormFields(this)
   event.preventDefault()
   gameApi.passwordReset(data)
@@ -64,23 +46,26 @@ const resetPassword = function (event) {
 }
 
 const logoutUser = function (event) {
-  //const data = getFormFields(this)
+  // const data = getFormFields(this)
   event.preventDefault()
   gameApi.userLogout()
   .then(gameUi.onLogoutSuccess)
   .catch(gameUi.onLogoutFailure)
 }
 
+const newGame = function (event) {
+  event.preventDefault()
+  gameApi.createGame()
+    .then(gameUi.newGameCreated)
+    .catch(gameUi.newGameFail)
+}
+
 const playGame = function (event) {
-  //console.log("Working")
   event.preventDefault()
   gameApi.getGame()
   .then(gameUi.onGameSuccess)
   .catch(gameUi.onGameFail)
 }
-
-/*const playGame = function (event) {
-}*/
 
 const onGetUsers = function (event) {
   event.preventDefault()
@@ -105,15 +90,28 @@ const onGetUser = function (event) {
   }
 }
 
+const updateGameStates = function (index, value, over) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+
+  console.log(data)
+
+  gameApi.updateMoves(index, value, over)
+  .then(gameUi.updateGameStatesSuccess)
+  .catch(gameUi.updateGameStatesFail)
+}
+
 module.exports = {
   onGetUser,
   onGetUsers,
-  loadRegistration,
-  loadLogin,
+  // loadRegistration,
+  // loadLogin,
   registerUser,
   loginUser,
   loadGame,
   logoutUser,
   resetPassword,
-  playGame
+  playGame,
+  newGame,
+  updateGameStates
 }

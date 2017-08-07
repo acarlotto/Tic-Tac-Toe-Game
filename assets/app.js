@@ -1,5 +1,5 @@
 'use strict'
 
 module.exports = {
-  production: 'https://ga-wdi-boston.herokuapp.com'
+  host: 'https://aqueous-atoll-85096.herokuapp.com'
 }
