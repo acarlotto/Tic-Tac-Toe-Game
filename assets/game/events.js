@@ -60,14 +60,25 @@ const newGame = function (event) {
     .catch(gameUi.newGameFail)
 }
 
+// this is get game
 const playGame = function (event) {
   event.preventDefault()
+  console.log('getGame is running!')
   gameApi.getGame()
-  .then(gameUi.onGameSuccess)
-  .catch(gameUi.onGameFail)
+  .then(gameUi.onGetGameSuccess)
+  .catch(gameUi.onGetGameFail)
 }
 
-const onGetUsers = function (event) {
+const updateGameStates = function (index, value, over) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  console.log('data')
+  gameApi.updateMoves(index, value, over)
+  .then(gameUi.updateGameStatesSuccess)
+  .catch(gameUi.updateGameStatesFail)
+}
+
+/* const onGetUsers = function (event) {
   event.preventDefault()
   gameApi.index()
     .then(gameUi.onSuccess)
@@ -88,22 +99,11 @@ const onGetUser = function (event) {
   } else {
     console.error('Please provide a user id!')
   }
-}
-
-const updateGameStates = function (index, value, over) {
-  event.preventDefault()
-  const data = getFormFields(event.target)
-
-  console.log(data)
-
-  gameApi.updateMoves(index, value, over)
-  .then(gameUi.updateGameStatesSuccess)
-  .catch(gameUi.updateGameStatesFail)
-}
+} */
 
 module.exports = {
-  onGetUser,
-  onGetUsers,
+  // onGetUser,
+  // onGetUsers,
   // loadRegistration,
   // loadLogin,
   registerUser,

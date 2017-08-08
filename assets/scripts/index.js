@@ -18,4 +18,6 @@ $(() => {
   $('#log-out').on('click', gameEvents.logoutUser)
   $('#passChange').on('submit', gameEvents.resetPassword)
   $('#reset').on('click', gameEvents.newGame)
+  $('#get-game').on('submit', gameEvents.playGame)
+  $('#update-game-state').on('submit', gameEvents.updateGameStates)
 })

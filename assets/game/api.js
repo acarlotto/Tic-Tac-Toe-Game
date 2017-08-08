@@ -73,19 +73,21 @@ const userLogout = function () {
   return $.ajax({
     url: app.host + '/sign-out/' + app.user.id,
     headers: {
-      Authorization: 'Token token=' + app.user.token,
+      Authorization: 'Token token=' + app.user.token
     },
     method: 'DELETE'
   })
 }
 
-const getGame = function () {
+// not sure what this is supposed to do
+const getGame = function (data) {
   return $.ajax({
     url: app.host + '/games',
+    method: 'POST',
     headers: {
       Authorization: 'Token token=' + app.user.token
-    },
-    method: 'POST'
+    }
+    // data
   })
 }
 
@@ -105,13 +107,19 @@ const show = function (id) {
 
 const createGame = function (data) {
   console.log('createGame from api.js ran!')
+  console.log(app.user)
+  console.log(app.user.token)
   return $.ajax({
     url: app.host + '/games',
     method: 'POST',
     headers: {
-      Authorization: 'Token token=' + app.user.token
+      Authorization: 'Token token=' + app.user.token// app.user.token
     },
     data
+  })
+  .then((response) => {
+    console.log('Response is ', response)
+    app.gameID = response.gameID
   })
 }
 
@@ -128,14 +136,14 @@ const createGame = function (data) {
 } */
 
 // delete if game breaks
-const updateGame = function () {
-  return  $.ajax({
-    url: app.host + '/games/' + id,
-    method: 'PATCH'
-  })
-}
+// const updateGame = function () {
+  // return  $.ajax({
+  //  url: app.host + '/games/' + id,
+    // method: 'PATCH'
+//   })
+// }
 
-const updateMoves = function (index, value, over) {
+/* const updateMoves = function (index, value, over) {
   console.log('updateGameState from api.js ran!')
   console.log(app.user.token)
   return $.ajax({
@@ -148,7 +156,28 @@ const updateMoves = function (index, value, over) {
       'game': {
         'cell': {
           'index': index,
-          'value': 'value'
+          'value': value
+        },
+        'over': over
+      }
+    }
+  })
+} */
+
+const updateMoves = function (index, value, over) {
+  console.log('updateGameState from api.js ran!')
+  console.log(app.user.token)
+  return $.ajax({
+    url: app.host + '/games/' + store.game.id, // was just id
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token// app.user.token
+    },
+    data: {
+      'game': {
+        'cell': {
+          'index': index,
+          'value': value
         },
         'over': over
       }

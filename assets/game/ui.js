@@ -51,6 +51,7 @@ const onSigninFailure = (error) => {
 const updateGameStatesSuccess = function (data) {
   app.user = data.user
   console.log('testing update game states success')
+  store.games = id.games
 }
 
 const updateGameStatesFail = function (data) {
@@ -109,9 +110,22 @@ const newGameCreated = (data) => {
   console.log(data)
   //store.game = data.game
 }
+
+const onGetGameSuccess = function () {
+  console.log('got game')
+  console.log('user' + app.user.id)
+  //$('#board').show()
+}
+
+const onGetGameFail = function () {
+  console.log('got game failed')
+}
+
 module.exports = {
   // onLoadSuccess,
   // onLoadError,
+  onGetGameSuccess,
+  onGetGameFail,
   onSuccessAllUsers,
   onErrorAllUsers,
   onSignupSuccess,

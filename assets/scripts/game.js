@@ -1,19 +1,27 @@
 'use strict'
 
+const gameEvents = require('../game/events')
+
 // Player X will start the game always
 let playerToken = 'x'
-let over = []
-let value = []
-let index = []
+let over
+let value
+let index
 let count = parseInt($(this).data('click')) || 0
 let xWin = 1
 let oWin = 1
 
-const updateGame = function (over, cell) {
-  if (cell === 'r1') {
-    // value = ($('#r1')on(click, function).html())
+const updateGame = function (cell, over) {
+  if (cell === '#r1') {
+    value = $('#r1').on('click').html()
     index = 0
-    over = over
+    over = true
+    // gameEvents.updateGameStates(index, value, over)
+    // $('#update-game-state').on('submit', gameEvents.updateGameStates)
+  } else if (cell === 'r2') {
+    value = $('#r2').html()
+    index = 1
+    over = true
     gameEvents.updateGameStates(index, value, over)
   }
 }
@@ -56,6 +64,7 @@ const checkIfPlayerWon = function (symbol) {
      $('#r1').hasClass('square-x') && $('#r4').hasClass('square-x') && $('#r7').hasClass('square-x') ||
      $('#r2').hasClass('square-x') && $('#r5').hasClass('square-x') && $('#r8').hasClass('square-x') ||
      $('#r3').hasClass('square-x') && $('#r6').hasClass('square-x') && $('#r9').hasClass('square-x')) {
+    updateGame()
     setMessage('Player X has won the game. Start a new game')
     $('.gameBoard').removeClass('disable')
     $('.square').removeClass('square-o')
@@ -74,6 +83,7 @@ const checkIfPlayerWon = function (symbol) {
      $('#r1').hasClass('square-o') && $('#r4').hasClass('square-o') && $('#r7').hasClass('square-o') ||
      $('#r2').hasClass('square-o') && $('#r5').hasClass('square-o') && $('#r8').hasClass('square-o') ||
      $('#r3').hasClass('square-o') && $('#r6').hasClass('square-o') && $('#r9').hasClass('square-o')) {
+    updateGame()
     setMessage('Player O has won the game. Start a new game')
     $('.gameBoard').removeClass('disable')
     $('.square').removeClass('square-o')
@@ -85,6 +95,7 @@ const checkIfPlayerWon = function (symbol) {
     playerToken = 'x'
     return ('square-o')
   } else if (count === 9) {
+    updateGame()
     over = true
     setMessage('Tie Game')
     $('.gameBoard').removeClass('disable')
