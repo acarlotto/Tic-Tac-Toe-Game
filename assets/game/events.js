@@ -70,9 +70,9 @@ const playGame = function (event) {
 }
 
 const updateGameStates = function (index, value, over) {
-  event.preventDefault()
-  const data = getFormFields(event.target)
-  console.log('data')
+  // event.preventDefault()
+  // const data = getFormFields(event.target)
+  // console.log('on updateGameState')
   gameApi.updateMoves(index, value, over)
   .then(gameUi.updateGameStatesSuccess)
   .catch(gameUi.updateGameStatesFail)
@@ -101,11 +101,31 @@ const onGetUser = function (event) {
   }
 } */
 
+const totalGamesPlayed = function (event) {
+  event.preventDefault()
+  gameApi.getIndex()
+    .then((response) => {
+      store.games = response.games
+      $('#setMessage').text('You battled ' + store.games.length + ' many times.')
+      return store.games.length
+    })
+    .then(gameUi.success)
+    .catch(gameUi.failure)
+}
+
+const viewGames = function (event) {
+  event.preventDefault()
+  gameApi.gameViews()
+  .then(gameUi.onViewSuccess)
+  .catch(gameUi.onViewError)
+}
+
 module.exports = {
   // onGetUser,
   // onGetUsers,
   // loadRegistration,
   // loadLogin,
+  viewGames,
   registerUser,
   loginUser,
   loadGame,
@@ -113,5 +133,6 @@ module.exports = {
   resetPassword,
   playGame,
   newGame,
+  totalGamesPlayed,
   updateGameStates
 }

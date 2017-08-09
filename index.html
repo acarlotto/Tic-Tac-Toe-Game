@@ -105,11 +105,18 @@
        <input class="btn btn-lg btn-danger reset-button" type="submit" name="submit" value="Get Game">
    </form>
 
-   <form id="update-game-state">
-      <input name="game[cell][index]" type="hidden" value="0">
-      <input name="game[cell][value]" type="hidden" value="x">
-      <input name="game[over]" type="hidden" value="false">
-    </form>
+   <form id="update" hidden>
+          <input id="index" name="game[cell][index]" type="text" value="">
+<!-- $('#index').val(+$(this).attr('id'))-->
+          <input id="value" name="game[cell][value]" type="text" value="">
+<!--$('#value').val(playerToken)-->>
+          <input id="over" name="game[over]" type="text" value="">
+<!--$('#over').val('true') -->
+        </form>
+
+     <button class="btn" id="view-games"> View Games </button>
+
+     <button class="btn" id="play-game"> Play Game </button>
 
 </div>
 

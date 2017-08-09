@@ -49,13 +49,12 @@ const onSigninFailure = (error) => {
 }
 
 const updateGameStatesSuccess = function (data) {
-  app.user = data.user
+  app.game = data.game
+  console.log(app.game)
   console.log('testing update game states success')
-  store.games = id.games
 }
 
 const updateGameStatesFail = function (data) {
-  app.user = data.user
   console.log('testing update game states fail')
 }
 
@@ -111,9 +110,10 @@ const newGameCreated = (data) => {
   //store.game = data.game
 }
 
-const onGetGameSuccess = function () {
+const onGetGameSuccess = function (data) {
   console.log('got game')
   console.log('user' + app.user.id)
+  app.game = data.game
   //$('#board').show()
 }
 
@@ -121,9 +121,41 @@ const onGetGameFail = function () {
   console.log('got game failed')
 }
 
+const onViewSuccess = function (data) {
+  // app.game.id = data.game.id
+  // app.game.over = data.game.over
+  console.log(data)
+  // assign variable to game data array
+  let games = data.games
+  // hide view button and change password form
+  // $('#view-games').hide()
+  // $('#change-password').hide()
+  // append table of games to page
+  // $('main').append('<div class="row"> <table> <tr> <th> Game ID </th> <th> Over </th> </tr>')
+  //loop through each game and print out the id and whether it is over
+  games.forEach(function(game) {
+    $('main').append('<tr> <td> <a href="javascript:" class="get-game-id" id="' + game.id + '">' + game.id + ' </a> </td> <td>' + game.over + '</td></tr>')
+    // assign click handler to dynamically added links
+    $('.get-game-id').on('click', function() {
+      event.preventDefault()
+      //gameEvents.getGameById()
+    })
+  })
+    //$(this).attr('id', game.id)
+    //$('main').append('</table> </div>')
+}
+
+// if view games fails
+const onViewError = function () {
+  console.error(error)
+  // show error on main page
+  $('main').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + error + ' </p></div>')
+}
 module.exports = {
   // onLoadSuccess,
   // onLoadError,
+  onViewSuccess,
+  onViewError,
   onGetGameSuccess,
   onGetGameFail,
   onSuccessAllUsers,

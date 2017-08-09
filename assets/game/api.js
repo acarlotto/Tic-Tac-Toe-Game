@@ -80,14 +80,22 @@ const userLogout = function () {
 }
 
 // not sure what this is supposed to do
-const getGame = function (data) {
+const getGame = function () {
+  // console.log ("Hello")
+  // console.log(app.user.token)
   return $.ajax({
     url: app.host + '/games',
-    method: 'POST',
     headers: {
       Authorization: 'Token token=' + app.user.token
+    },
+    method: 'POST',
+    success: function (response) {
+      console.log(response)
     }
-    // data
+    // ail: function (error) {
+      // console.log(error)
+      // console.log("Please Log in")
+    // }
   })
 }
 
@@ -113,44 +121,25 @@ const createGame = function (data) {
     url: app.host + '/games',
     method: 'POST',
     headers: {
-      Authorization: 'Token token=' + app.user.token// app.user.token
+      Authorization: 'Token token=' + app.user.token // app.user.token
     },
     data
   })
-  .then((response) => {
+  .then((response) => { // found in issue tracker
     console.log('Response is ', response)
     app.gameID = response.gameID
   })
 }
 
-/* const passwordReset = function (data) {
-  // console.log(data)
-  return $.ajax({
-    url: app.host + '/change-password/' + app.user.id,
-    headers: {
-      Authorization: 'Token token=' + app.user.token
-    },
-    method: 'PATCH',
-    data
-  })
-} */
-
-// delete if game breaks
-// const updateGame = function () {
-  // return  $.ajax({
-  //  url: app.host + '/games/' + id,
-    // method: 'PATCH'
-//   })
-// }
-
-/* const updateMoves = function (index, value, over) {
-  console.log('updateGameState from api.js ran!')
+const updateMoves = function (index, value, over) {
+  // console.log(app.gameID)
   console.log(app.user.token)
+  console.log(index, value, over)
   return $.ajax({
-    url: app.host + '/games/' + app.game.id,
+    url: app.host + '/games/' + app.gameID, // was just id and then app.game.id (didn't work)
     method: 'PATCH',
     headers: {
-      Authorization: 'Token token=' + app.user.token
+      Authorization: 'Token token=' + app.user.token // store.user.token
     },
     data: {
       'game': {
@@ -162,25 +151,15 @@ const createGame = function (data) {
       }
     }
   })
-} */
+}
 
-const updateMoves = function (index, value, over) {
-  console.log('updateGameState from api.js ran!')
+const gameViews = function () {
   console.log(app.user.token)
   return $.ajax({
-    url: app.host + '/games/' + store.game.id, // was just id
-    method: 'PATCH',
+    url: app.host + '/games',
+    method: 'GET',
     headers: {
-      Authorization: 'Token token=' + store.user.token// app.user.token
-    },
-    data: {
-      'game': {
-        'cell': {
-          'index': index,
-          'value': value
-        },
-        'over': over
-      }
+      Authorization: 'Token token=' + app.user.token
     }
   })
 }
@@ -197,5 +176,6 @@ module.exports = {
   userLogout,
   getGame,
   createGame,
-  updateMoves
+  updateMoves,
+  gameViews
 }
