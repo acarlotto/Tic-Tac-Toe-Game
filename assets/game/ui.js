@@ -48,13 +48,13 @@ const onSigninFailure = (error) => {
   }
 }
 
-const updateGameStatesSuccess = function (data) {
-  app.game = data.game
-  console.log(app.game)
+const updateGameStatesSuccess = function (index, value) {
+  console.log(app.gameID)
   console.log('testing update game states success')
 }
 
-const updateGameStatesFail = function (data) {
+const updateGameStatesFail = function (index, value) {
+  console.log(app.gameID)
   console.log('testing update game states fail')
 }
 
@@ -134,7 +134,7 @@ const onViewSuccess = function (data) {
   // $('main').append('<div class="row"> <table> <tr> <th> Game ID </th> <th> Over </th> </tr>')
   //loop through each game and print out the id and whether it is over
   games.forEach(function(game) {
-    $('main').append('<tr> <td> <a href="javascript:" class="get-game-id" id="' + game.id + '">' + game.id + ' </a> </td> <td>' + game.over + '</td></tr>')
+    // $('main').append('<tr> <td> <a href="javascript:" class="get-game-id" id="' + game.id + '">' + game.id + ' </a> </td> <td>' + game.over + '</td></tr>')
     // assign click handler to dynamically added links
     $('.get-game-id').on('click', function() {
       event.preventDefault()

@@ -1,26 +1,26 @@
 const app = require('../app.js')
 
 const loadLogPage = function () {
-  // return $('#content').load('http://localhost:7165/login.html')
+  // return $('#content').load('')
     /* $.ajax({
-    url: 'http://localhost:7165/login.html',
+    url: '',
     method: 'GET',
     success: function () {
-      $('#container').load('http://localhost:7165/login.html')
+      $('#container').load('')
     }
   }) */
 }
 
 const loadRegPage = function () {
-  // return $('#content').load('http://localhost:7165/register.html')
+  // return $('#content').load('')
   /* $.ajax({
-    url: 'http://localhost:7165/register.html',
+    url: '',
     method: 'GET'
   }) */
 }
 
 const loadGamePage = function () {
-  return $('#content').load('http://localhost:7165/board.html')
+  return $('#content').load('')
 }
 
 const addUser = function (data) {
@@ -127,16 +127,16 @@ const createGame = function (data) {
   })
   .then((response) => { // found in issue tracker
     console.log('Response is ', response)
-    app.gameID = response.gameID
+    app.game.id = response.game.id
   })
 }
 
-const updateMoves = function (index, value, over) {
-  // console.log(app.gameID)
+const moves = function (index, value, over) {
+  console.log(app.game.id)
+  // let index = event.target.id
   console.log(app.user.token)
-  console.log(index, value, over)
   return $.ajax({
-    url: app.host + '/games/' + app.gameID, // was just id and then app.game.id (didn't work)
+    url: app.host + '/games/' + app.game.id, // was just id and then app.game.id (didn't work)
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + app.user.token // store.user.token
@@ -144,10 +144,10 @@ const updateMoves = function (index, value, over) {
     data: {
       'game': {
         'cell': {
-          'index': index,
-          'value': value
+          'index': event.target.id,
+          'value': value // $(event.target.id).append(cell)
         },
-        'over': over
+        'over': true
       }
     }
   })
@@ -176,6 +176,6 @@ module.exports = {
   userLogout,
   getGame,
   createGame,
-  updateMoves,
+  moves,
   gameViews
 }

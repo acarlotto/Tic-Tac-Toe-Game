@@ -71,11 +71,13 @@ const playGame = function (event) {
 
 const updateGameStates = function (index, value, over) {
   // event.preventDefault()
-  // const data = getFormFields(event.target)
+  const data = getFormFields(event.target)
   // console.log('on updateGameState')
-  gameApi.updateMoves(index, value, over)
+  gameApi.moves(index, value, over)
   .then(gameUi.updateGameStatesSuccess)
   .catch(gameUi.updateGameStatesFail)
+  // console.log($('#r1').hasClass('square- + playerToken'))
+  console.log($('#r1').val())
 }
 
 /* const onGetUsers = function (event) {
