@@ -6,6 +6,7 @@ let playerToken = 'x'
 let count = parseInt($(this).data('click')) || 0
 let xWin = 1
 let oWin = 1
+let over
 
 // let board = ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X']
 
@@ -49,18 +50,13 @@ $('.square').on('click', function () {
   $(this).data('click', count)
 })
 
-/* function myFunction() {
-    let lastID;
-    lastID = $(this).attr("id")
-
-    console.log(lastID)
-} */
-// $(document).ready(function (switchTurns) {
 $('.gameBoard').on('click', ".square:not('.square-x, .square-o')", function (event) {
   const $square = $(event.currentTarget)
   $square.addClass('square-' + playerToken)
-  const cell = event.target.id
-  console.log(event.target.id)
+  // const cell = event.target.id
+  // console.log(event.target.id)
+  const index = $('.square').index(this)
+  console.log($('.square').index(this))
   const value = ('square-' + playerToken)
   console.log('square-' + playerToken)
 // Swap current player's token and check for win.
@@ -71,11 +67,10 @@ $('.gameBoard').on('click', ".square:not('.square-x, .square-o')", function (eve
     setMessage(playerToken + '\'s Turn')
   }
   checkIfPlayerWon()
-  gameEvents.updateGameStates(index, value, over)
-  // recordMoves()
+  gameEvents.updateGameStates(index, value)
 })
 
-$('.square').on('click', function (cell, over) {
+/* $('.square').on('click', function (cell, over) {
 const $square = $(event.currentTarget)
 // let index = $(event.target.id).index()
 //let cell = ('square-' + playerToken)
@@ -98,7 +93,7 @@ const $square = $(event.currentTarget)
     // $('#index').val(+$(this).attr('id'))
   }
 })
-// })
+// }) */
 /*
 const updateGame = function (cell, over) {
   if (cell === 'r1') {
@@ -137,7 +132,7 @@ const checkIfPlayerWon = function (symbol) {
     $('.square').removeClass('square-x')
     $('#xWin').text(xWin)
     calculateWinsX()
-    // over = true
+    over = true
     $('#over').val('true')
     count = 0
     playerToken = 'x'
@@ -157,19 +152,19 @@ const checkIfPlayerWon = function (symbol) {
     $('.square').removeClass('square-x')
     $('#oWin').text(oWin)
     calculateWinsO()
-    // over = true
+    over = true
     $('#over').val('true')
     count = 0
     playerToken = 'x'
     return ('square-o')
   } else if (count === 9) {
     // updateGame()
-    // over = true
     $('#over').val('true')
     setMessage('Tie Game')
     $('.gameBoard').removeClass('disable')
     $('.square').removeClass('square-o')
     $('.square').removeClass('square-x')
+    over = true
     count = 0
     playerToken = 'x'
     setMessage('tie game')

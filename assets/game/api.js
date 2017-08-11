@@ -144,10 +144,10 @@ const moves = function (index, value, over) {
     data: {
       'game': {
         'cell': {
-          'index': event.target.id,
+          'index': index,
           'value': value // $(event.target.id).append(cell)
         },
-        'over': true
+        'over': over
       }
     }
   })
