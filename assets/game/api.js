@@ -1,26 +1,15 @@
 const app = require('../app.js')
 
 const loadLogPage = function () {
-  // return $('#content').load('')
-    /* $.ajax({
-    url: '',
-    method: 'GET',
-    success: function () {
-      $('#container').load('')
-    }
-  }) */
+
 }
 
 const loadRegPage = function () {
-  // return $('#content').load('')
-  /* $.ajax({
-    url: '',
-    method: 'GET'
-  }) */
+
 }
 
 const loadGamePage = function () {
-  return $('.content').load('')
+
 }
 
 const addUser = function (data) {
@@ -33,7 +22,7 @@ const addUser = function (data) {
       "credentials" : {
         "email": data.credentials.email,
         "password": data.credentials.password,
-        "password_confirmation": data.credentials.password_confirmation
+        "password_confirmation": data.credentials.password
       }
     }
   })
@@ -155,7 +144,7 @@ const moves = function (index, value, over) {
 
 const gameViews = function () {
   console.log(app.user.token)
-  // console.log(games.length)
+  console.log(games.length)
   return $.ajax({
     url: app.host + '/games',
     method: 'GET',

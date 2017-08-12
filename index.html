@@ -12,7 +12,9 @@
       <!-- Do not add `script` tags unless you know what you are doing -->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+
     </head>
+
     <body class="container-fluid">
 
       <nav class="navbar navbar-default">
@@ -49,11 +51,11 @@
   </div><!-- /.container-fluid -->
 </nav>
 
- <main>
+ <message>
 <div class="content">
-
+<div class = "buttons">
   <div class="title">TIC TAC TOE</div>
-  <div id="message">Start the game!</div>
+
    <form id="registration">
     <h2> Register To Play </h2>
     <div class="input-group">
@@ -64,6 +66,8 @@
     <label for="password"> Password </label>
     <input type="password" name="credentials[password]" placeholder="Password">
     </div>
+
+
     <div class="input-group">
     <label for="password-confirm"> Password </label>
     <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
@@ -99,7 +103,7 @@
      <input type="submit" name="submit" class="submit" value="Change Password">
    </form>
 
-   <button class="btn" id="log-out"> Log Out </button>
+
 <!--
    <form id="get-game">
        <input class="btn btn-lg btn-danger reset-button" type="submit" name="submit" value="Get Game">
@@ -114,15 +118,24 @@
 <!--$('#over').val('true') -->
         </form>
 
-     <button class="btn" id="view-games"> View Games </button>
-
-     <button class="btn" id="play-game"> Play Game </button>
+</div>
 
      <!-- <form id="get-game">
        <input type="submit" name="submit" class="submit" value="Get Game"></input>
      </form>-->
 
+
 </div>
+
+
+<div class = "play">
+  <button class="btn" id="play-game"> Play Game </button>   |    <button class="btn" id="log-out"> Log Out </button>
+
+  <div id="message">Start the game!</div>
+</div>
+
+
+
 
   <div class="gameBoard" id=board>
   <div class="row">
@@ -147,8 +160,10 @@
 
 <div class="content"><a href="#" id="reset" class="btn-success btn span12">START NEW GAME</a></div></div>
 
-</main>
 
+<button class="btn" id="view-games"> View Games </button>
+</message>
+</div>
 
 <script type="text/javascript" src="assets/scripts/game.js"></script>
 

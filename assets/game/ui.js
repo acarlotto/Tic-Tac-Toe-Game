@@ -3,17 +3,18 @@
 let app = require('../app.js')
 let user
 
-const displayErrorMessage = (errorText) => {
-  $('#display-error').text('')
-  $('#display-error').show()
-  $('#display-error').text(errorText || 'Unknown error')
-  $('#display-error').delay(3000).fadeOut()
-}
+// const displayErrorMessage = (errorText) => {
+  // $('#display-error').text('')
+  // $('#display-error').show()
+  // $('#display-error').text(errorText || 'Unknown error')
+  // $('#display-error').delay(3000).fadeOut()
+// }
 
 const onSignupSuccess = function () {
   console.log('Signup Successful!')
   $('#registration').hide()
   $('#login').show()
+  $('#board').hide()
 }
 
 // const onSignupFailure = function (error) {
@@ -21,25 +22,28 @@ const onSignupSuccess = function () {
 // }
 
 const onSignupFailure = (error) => {
-  if (error.status === 400) {
+  // if (error.status === 400) {
     console.log(error)
     console.log('There was problem signing up, please try again!')
-  } else {
-    setMessage()
-  }
+    $('message').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + 'Passwords do not match. Try again!' + ' </p></div>')
+
+  // } else if {
+  //  setMessage()
 }
+// }
 
 const onSigninSuccess = function (data) {
   console.log(app)
   app.user = data.user
   console.log('sign in successful')
-  $('#board').show()
+  // $('#board').show()
   // hide change-password
   $('#passChange').hide()
   // hide login
   $('#login').hide()
   // hide register
   $('#registration').hide()
+  $('#board').hide()
 }
 
 // const onSigninFailure = function (error) {
@@ -48,7 +52,7 @@ const onSigninSuccess = function (data) {
 
 const onSigninFailure = (error) => {
   if (error.status === 401) {
-    $('main').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + 'Invalid username or password.' + ' </p></div>')
+    $('message').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + 'Invalid username or password.' + ' </p></div>')
     console.log('Invalid username or password.')
   } else {
     displayErrorMessage()
@@ -82,9 +86,17 @@ const onLogoutSuccess = function () {
   app.user = null
   console.log('User Logged Out')
   $('#board').hide()
+  // show login
+  $('#login').show()
+// show passChange
+  $('#passChange').show()
+  // show registration
   $('#registration').show()
-  // $('#reset div').hide()
-  // $('.gameBoard').hide()
+  $('#reset').hide()
+  $('#view-games').hide()
+  $('#play-game').hide()
+  $('#log-out').hide()
+  $('.play').hide()
 }
 
 const onLogoutFailure = function (error) {
@@ -109,6 +121,10 @@ const onErrorAllUsers = function (response) {
   console.error(response)
 }
 
+// const playGameAfterLogin = function {
+  // $('#board').show()
+// }
+
 const newGameCreated = (data) => {
   console.log('createGameSuccess from ui.js ran!')
   // $('.box').text('')
@@ -122,8 +138,7 @@ const onGetGameSuccess = function (data) {
   console.log('got game')
   console.log('user' + app.user.id)
   app.game = data.game
-
-  //$('#board').show()
+  $('#board').show()
 }
 
 const onGetGameFail = function () {
@@ -137,7 +152,7 @@ const onViewSuccess = function (data) {
   // assign variable to game data array
   let games = data.games
   let totalNumber = games.length
-  $('main').prepend('<div class="row" style="text-align: center; color: black"> <p>You have played ' + totalNumber + ' Games!!</p></div>')
+  $('message').prepend('<div class="row" style="text-align: center; color: black"> <p>You have played ' + totalNumber + ' Games!!</p></div>')
   // hide view button and change password form
   // $('#view-games').hide()
   // $('#change-password').hide()
@@ -160,7 +175,7 @@ const onViewSuccess = function (data) {
 const onViewError = function () {
   console.error(error)
   // show error on main page
-  $('main').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + error + ' </p></div>')
+  $('message').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + error + ' </p></div>')
 }
 module.exports = {
   // onLoadSuccess,
@@ -182,6 +197,6 @@ module.exports = {
   onGameSuccess,
   updateGameStatesSuccess,
   updateGameStatesFail,
-  displayErrorMessage,
+  // displayErrorMessage,
   onGameFail
 }

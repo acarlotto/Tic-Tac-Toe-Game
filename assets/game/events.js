@@ -11,12 +11,11 @@ const getFormFields = require('../../lib/get-form-fields')
 // event handler for login button
 // const loadLogin = function (event) {
   // event.preventDefault()
-  // }
 
 const loadGame = function (event) {
   event.preventDefault()
   gameApi.loadGamePage()
-  // TODO Figure out how to catch and report errors when using Ajax load function
+  // $('#board').hide()
 }
 
 // event handler for registration form
