@@ -100,6 +100,8 @@ const onLogoutSuccess = function () {
   $('#play-game').hide()
   $('#log-out').hide()
   $('.play').hide()
+  $('#message').hide()
+  $('#passChangeButton').hide()
 }
 
 const onLogoutFailure = function (error) {
@@ -147,9 +149,9 @@ const onGetGameSuccess = function (data) {
   $('#view-games').show()
   $('#play-game').show()
   $('#log-out').show()
-  $('#message').show()
+  // $('#message').hide()
   // $('#passChange').show()
-  $('#main').hide()
+  // $('#main').hide()
 }
 
 const onGetGameFail = function () {
