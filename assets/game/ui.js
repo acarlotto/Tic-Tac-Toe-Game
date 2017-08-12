@@ -38,12 +38,18 @@ const onSigninSuccess = function (data) {
   console.log('sign in successful')
   // $('#board').show()
   // hide change-password
-  $('#passChange').hide()
   // hide login
   $('#login').hide()
   // hide register
   $('#registration').hide()
-  $('#board').hide()
+  $('#board').hide() // enter the class or id of the particular html element which you wish to hide.
+  $('#view-games').hide()
+  $('#play-game').show()
+  $('#reset').hide()
+  $('#message').show()
+  $('#log-out').show()
+  $('#passChange').hide()
+  $('#passChangeButton').show()
 }
 
 // const onSigninFailure = function (error) {
@@ -71,15 +77,12 @@ const updateGameStatesFail = function (index, value) {
 
 const onResetSuccess = function () {
   console.log('Password Reset Successfully')
+  $('message').prepend('<div class="row" style="text-align: center; color: red"> <p>Password Reset Successfully</p></div>')
   // $('#content').load('http://localhost:7165/index.html')
 }
 
-const onResetFailure = (error) => {
-  if (error.status === 400) {
-    console.log('Invalid password.')
-  } else {
-    displayErrorMessage()
-  }
+const onResetFailure = function () {
+  $('message').prepend('<div class="row" style="text-align: center; color: red"> <p>Invalid Password.</p></div>')
 }
 
 const onLogoutSuccess = function () {
@@ -89,7 +92,7 @@ const onLogoutSuccess = function () {
   // show login
   $('#login').show()
 // show passChange
-  $('#passChange').show()
+  $('#passChange').hide()
   // show registration
   $('#registration').show()
   $('#reset').hide()
@@ -139,6 +142,14 @@ const onGetGameSuccess = function (data) {
   console.log('user' + app.user.id)
   app.game = data.game
   $('#board').show()
+  $('#registration').hide()
+  $('#reset').show()
+  $('#view-games').show()
+  $('#play-game').show()
+  $('#log-out').show()
+  $('#message').show()
+  // $('#passChange').show()
+  $('#main').hide()
 }
 
 const onGetGameFail = function () {
@@ -149,6 +160,7 @@ const onViewSuccess = function (data) {
   // app.game.id = data.game.id
   // app.game.over = data.game.over
   console.log(data.games.length)
+  console.log(data.games)
   // assign variable to game data array
   let games = data.games
   let totalNumber = games.length
@@ -169,6 +181,10 @@ const onViewSuccess = function (data) {
   })
     //$(this).attr('id', game.id)
     //$('main').append('</table> </div>')
+}
+
+const getPassChange = function () {
+  $('#passChange').show()
 }
 
 // if view games fails

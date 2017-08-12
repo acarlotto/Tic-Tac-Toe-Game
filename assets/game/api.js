@@ -9,7 +9,10 @@ const loadRegPage = function () {
 }
 
 const loadGamePage = function () {
-
+  return $.ajax({
+    url: app.host,
+    method: 'GET'
+  })
 }
 
 const addUser = function (data) {
@@ -144,7 +147,7 @@ const moves = function (index, value, over) {
 
 const gameViews = function () {
   console.log(app.user.token)
-  console.log(games.length)
+  // console.log(games.length)
   return $.ajax({
     url: app.host + '/games',
     method: 'GET',

@@ -131,6 +131,7 @@ const checkIfPlayerWon = function (symbol) {
     $('.gameBoard').removeClass('disable')
     $('.square').removeClass('square-o')
     $('.square').removeClass('square-x')
+    $('.gameBoard').hide()
     $('#xWin').text(xWin)
     calculateWinsX()
     over = true
@@ -146,11 +147,11 @@ const checkIfPlayerWon = function (symbol) {
     $('#r1').hasClass('square-o') && $('#r4').hasClass('square-o') && $('#r7').hasClass('square-o') ||
     $('#r2').hasClass('square-o') && $('#r5').hasClass('square-o') && $('#r8').hasClass('square-o') ||
     $('#r3').hasClass('square-o') && $('#r6').hasClass('square-o') && $('#r9').hasClass('square-o')) {
-    // updateGame()
     setMessage('Player O has won the game. Start a new game')
     $('.gameBoard').removeClass('disable')
     $('.square').removeClass('square-o')
     $('.square').removeClass('square-x')
+    $('.gameBoard').hide()
     $('#oWin').text(oWin)
     calculateWinsO()
     over = true
@@ -165,6 +166,7 @@ const checkIfPlayerWon = function (symbol) {
     $('.gameBoard').removeClass('disable')
     $('.square').removeClass('square-o')
     $('.square').removeClass('square-x')
+    $('.gameBoard').hide()
     over = true
     count = 0
     playerToken = 'x'

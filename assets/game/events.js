@@ -15,7 +15,8 @@ const getFormFields = require('../../lib/get-form-fields')
 const loadGame = function (event) {
   event.preventDefault()
   gameApi.loadGamePage()
-  // $('#board').hide()
+  .then(gameUi.onSigninSuccess)
+  .catch(gameUi.onSigninFailure)
 }
 
 // event handler for registration form
