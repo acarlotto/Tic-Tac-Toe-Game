@@ -7,7 +7,7 @@ let count = parseInt($(this).data('click')) || 0
 let xWin = 1
 let oWin = 1
 let over
-
+// let games won = game
 // let board = ['X', 'O', 'X', 'O', 'X', 'O', 'X', 'O', 'X']
 
 /* $('.square').on('click', function (index, value, over) {
@@ -62,6 +62,7 @@ $('.gameBoard').on('click', ".square:not('.square-x, .square-o')", function (eve
 // Swap current player's token and check for win.
   if (playerToken === 'x') {
     playerToken = 'o'
+    setMessage(playerToken + '\'s Turn')
   } else if (playerToken === 'o') {
     playerToken = 'x'
     setMessage(playerToken + '\'s Turn')

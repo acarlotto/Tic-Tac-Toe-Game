@@ -12,8 +12,8 @@ const displayErrorMessage = (errorText) => {
 
 const onSignupSuccess = function () {
   console.log('Signup Successful!')
-  // $('#registration').hide()
-  // $('#login').show()
+  $('#registration').hide()
+  $('#login').show()
 }
 
 // const onSignupFailure = function (error) {
@@ -22,6 +22,7 @@ const onSignupSuccess = function () {
 
 const onSignupFailure = (error) => {
   if (error.status === 400) {
+    console.log(error)
     console.log('There was problem signing up, please try again!')
   } else {
     setMessage()
@@ -33,6 +34,12 @@ const onSigninSuccess = function (data) {
   app.user = data.user
   console.log('sign in successful')
   $('#board').show()
+  // hide change-password
+  $('#passChange').hide()
+  // hide login
+  $('#login').hide()
+  // hide register
+  $('#registration').hide()
 }
 
 // const onSigninFailure = function (error) {
@@ -75,6 +82,7 @@ const onLogoutSuccess = function () {
   app.user = null
   console.log('User Logged Out')
   $('#board').hide()
+  $('#registration').show()
   // $('#reset div').hide()
   // $('.gameBoard').hide()
 }
@@ -114,6 +122,7 @@ const onGetGameSuccess = function (data) {
   console.log('got game')
   console.log('user' + app.user.id)
   app.game = data.game
+
   //$('#board').show()
 }
 
@@ -124,9 +133,11 @@ const onGetGameFail = function () {
 const onViewSuccess = function (data) {
   // app.game.id = data.game.id
   // app.game.over = data.game.over
-  console.log(data)
+  console.log(data.games.length)
   // assign variable to game data array
   let games = data.games
+  let totalNumber = games.length
+  $('main').prepend('<div class="row" style="text-align: center; color: black"> <p>You have played ' + totalNumber + ' Games!!</p></div>')
   // hide view button and change password form
   // $('#view-games').hide()
   // $('#change-password').hide()

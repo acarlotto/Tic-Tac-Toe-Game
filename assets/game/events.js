@@ -22,6 +22,7 @@ const loadGame = function (event) {
 // event handler for registration form
 const registerUser = function (event) {
   const data = getFormFields(this)
+  // console.log(data)
   event.preventDefault()
   gameApi.addUser(data)
   .then(gameUi.onSignupSuccess)
@@ -85,7 +86,7 @@ const updateGameStates = function (index, value, over) {
   gameApi.index()
     .then(gameUi.onSuccess)
     .catch(gameUi.onError)
-}
+}*/
 
 const onGetUser = function (event) {
   event.preventDefault()
@@ -95,13 +96,14 @@ const onGetUser = function (event) {
   const games = data.games
 // how can we ensure the user input an id?
   if (games.id.length > 0) {
+    // console.log(games.length)
     gameApi.show(games.id)
       .then(gameUi.onSuccess)
       .catch(gameUi.onError)
   } else {
     console.error('Please provide a user id!')
   }
-} */
+}
 
 const totalGamesPlayed = function (event) {
   event.preventDefault()
@@ -115,7 +117,7 @@ const totalGamesPlayed = function (event) {
     .catch(gameUi.failure)
 }
 
-const viewGames = function (event) {
+const viewGames = function () {
   event.preventDefault()
   gameApi.gameViews()
   .then(gameUi.onViewSuccess)

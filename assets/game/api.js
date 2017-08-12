@@ -20,7 +20,7 @@ const loadRegPage = function () {
 }
 
 const loadGamePage = function () {
-  return $('#content').load('')
+  return $('.content').load('')
 }
 
 const addUser = function (data) {
@@ -33,7 +33,7 @@ const addUser = function (data) {
       "credentials" : {
         "email": data.credentials.email,
         "password": data.credentials.password,
-        "password_confirmation": data.credentials.password
+        "password_confirmation": data.credentials.password_confirmation
       }
     }
   })
@@ -132,7 +132,7 @@ const createGame = function (data) {
 }
 
 const moves = function (index, value, over) {
-  console.log(app.game.id)
+  // console.log(app.game.id)
   // let index = event.target.id
   console.log(app.user.token)
   return $.ajax({
@@ -155,6 +155,7 @@ const moves = function (index, value, over) {
 
 const gameViews = function () {
   console.log(app.user.token)
+  // console.log(games.length)
   return $.ajax({
     url: app.host + '/games',
     method: 'GET',

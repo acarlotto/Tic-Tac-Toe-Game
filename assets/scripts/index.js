@@ -18,9 +18,10 @@ $(() => {
   $('#log-out').on('click', gameEvents.logoutUser)
   $('#passChange').on('submit', gameEvents.resetPassword)
   $('#reset').on('click', gameEvents.newGame)
-  $('#get-game').on('submit', gameEvents.playGame)
+  $('#get-game').on('submit', gameEvents.onGetUser)
   $('#update-game-state').on('submit', gameEvents.updateGameStates)
   $('#view-games').on('click', gameEvents.viewGames)
   $('#play-game').on('click', gameEvents.playGame)
+  // $('#content').on(submit, gameEvents.loadGame) // might have to delete
   // $('#update').on('submit', gameEvents.updateGameStates)
 })
