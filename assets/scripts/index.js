@@ -32,7 +32,7 @@ $(() => {
     $('#play-game').hide()
     $('#log-out').hide()
     $('#reset').hide()
-    $('#message').hide()
+    $('#message').show()
     $('#view-games').on('click', gameEvents.viewGames)
     $('#passChange').hide()
     $('#passChangeButton').hide()

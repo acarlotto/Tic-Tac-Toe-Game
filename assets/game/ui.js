@@ -14,7 +14,9 @@ const onSignupSuccess = function () {
   console.log('Signup Successful!')
   $('#registration').hide()
   $('#login').show()
+  $('#message').show()
   $('#board').hide()
+  $('message').prepend('<div class="row" style="text-align: center; color: black"> <p>You are now signed up. Login. </p></div>')
 }
 
 // const onSignupFailure = function (error) {
