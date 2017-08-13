@@ -69,7 +69,7 @@ const newGame = function (event) {
 // this is get game
 const playGame = function (event) {
   event.preventDefault()
-  console.log('getGame is running!')
+  // console.log('getGame is running!')
   gameApi.getGame()
   .then(gameUi.onGetGameSuccess)
   .catch(gameUi.onGetGameFail)
@@ -83,7 +83,7 @@ const updateGameStates = function (index, value, over) {
   .then(gameUi.updateGameStatesSuccess)
   .catch(gameUi.updateGameStatesFail)
   // console.log($('#r1').hasClass('square- + playerToken'))
-  console.log($('#r1').val())
+  // console.log($('#r1').val())
 }
 
 /* const onGetUsers = function (event) {
@@ -106,7 +106,7 @@ const onGetUser = function (event) {
       .then(gameUi.onSuccess)
       .catch(gameUi.onError)
   } else {
-    console.error('Please provide a user id!')
+    // console.error('Please provide a user id!')
   }
 }
 

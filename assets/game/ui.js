@@ -11,7 +11,7 @@ let user
 // }
 
 const onSignupSuccess = function () {
-  console.log('Signup Successful!')
+  // console.log('Signup Successful!')
   $('#registration').show()
   $('#login').show()
   $('#message').hide()
@@ -27,19 +27,19 @@ const onSignupSuccess = function () {
 
 const onSignupFailure = (error) => {
   if (error.status === 401) {
-    console.log(error)
-    console.log('There was problem signing up, please try again!')
+    // console.log(error)
+    // console.log('There was problem signing up, please try again!')
     $('#errorMessage').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + 'Passwords do not match or username is already taken. Try again!' + ' </p></div>')
   } else {
-    console.log('There was problem signing up, please try again!***')
+    // console.log('There was problem signing up, please try again!***')
     $('#errorMessage').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + 'Passwords do not match or username is already taken. Try again!' + ' </p></div>')
   }
 }
 
 const onSigninSuccess = function (data) {
-  console.log(app)
+  // console.log(app)
   app.user = data.user
-  console.log('sign in successful')
+  // console.log('sign in successful')
   // $('#board').show()
   // hide change-password
   // hide login
@@ -66,7 +66,7 @@ const onSigninSuccess = function (data) {
 const onSigninFailure = (error) => {
   if (error.status === 401) {
     $('#errorMessage').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + 'Invalid username or password.' + ' </p></div>')
-    console.log('Invalid username or password.')
+    // console.log('Invalid username or password.')
     $('#errorMessage').show()
   } else {
     displayErrorMessage()
@@ -74,17 +74,17 @@ const onSigninFailure = (error) => {
 }
 
 const updateGameStatesSuccess = function (index, value) {
-  console.log(app.gameID)
-  console.log('testing update game states success')
+  // console.log(app.gameID)
+  // console.log('testing update game states success')
 }
 
 const updateGameStatesFail = function (index, value) {
-  console.log(app.gameID)
-  console.log('testing update game states fail')
+  // console.log(app.gameID)
+  // console.log('testing update game states fail')
 }
 
 const onResetSuccess = function () {
-  console.log('Password Reset Successfully')
+  // console.log('Password Reset Successfully')
   $('#changePasswordMessage').prepend('<div class="row" style="text-align: center; color: red"> <p>Password Reset Successfully</p></div>')
   $('#changePasswordMessage').show()
   // $('#content').load('http://localhost:7165/index.html')
@@ -97,7 +97,7 @@ const onResetFailure = function () {
 
 const onLogoutSuccess = function () {
   app.user = null
-  console.log('User Logged Out')
+  // console.log('User Logged Out')
   $('#board').hide()
   // show login
   $('#login').show()
@@ -144,17 +144,17 @@ const onErrorAllUsers = function (response) {
 // }
 
 const newGameCreated = (data) => {
-  console.log('createGameSuccess from ui.js ran!')
+  // console.log('createGameSuccess from ui.js ran!')
   // $('.box').text('')
   // $('#gameArea').show()
   // $('.banner-id').text("Let's Play!")
-  console.log(data)
+  // console.log(data)
   //store.game = data.game
 }
 
 const onGetGameSuccess = function (data) {
-  console.log('got game')
-  console.log('user' + app.user.id)
+  // console.log('got game')
+  // console.log('user' + app.user.id)
   app.game = data.game
   $('#board').show()
   $('#registration').hide()
@@ -172,14 +172,14 @@ const onGetGameSuccess = function (data) {
 }
 
 const onGetGameFail = function () {
-  console.log('got game failed')
+  // console.log('got game failed')
 }
 
 const onViewSuccess = function (data) {
   // app.game.id = data.game.id
   // app.game.over = data.game.over
-  console.log(data.games.length)
-  console.log(data.games)
+  // console.log(data.games.length)
+  // console.log(data.games)
   // assign variable to game data array
   let games = data.games
   let totalNumber = games.length
@@ -208,7 +208,7 @@ const getPassChange = function () {
 
 // if view games fails
 const onViewError = function () {
-  console.error(error)
+  // console.error(error)
   // show error on main page
   $('errorMessage').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + error + ' </p></div>')
 }

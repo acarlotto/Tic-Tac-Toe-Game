@@ -16,7 +16,7 @@ const loadGamePage = function () {
 }
 
 const addUser = function (data) {
-  console.log(data)
+  // console.log(data)
   return $.ajax({
     url: app.host + '/sign-up/',
     // headers: { 'header': 'Content-Type: application/json' },
@@ -82,7 +82,7 @@ const getGame = function () {
     },
     method: 'POST',
     success: function (response) {
-      console.log(response)
+      // console.log(response)
     }
     // ail: function (error) {
       // console.log(error)
@@ -106,9 +106,9 @@ const show = function (id) {
 }
 
 const createGame = function (data) {
-  console.log('createGame from api.js ran!')
-  console.log(app.user)
-  console.log(app.user.token)
+  // console.log('createGame from api.js ran!')
+  // console.log(app.user)
+  // console.log(app.user.token)
   return $.ajax({
     url: app.host + '/games',
     method: 'POST',
@@ -118,7 +118,7 @@ const createGame = function (data) {
     data
   })
   .then((response) => { // found in issue tracker
-    console.log('Response is ', response)
+    // console.log('Response is ', response)
     app.game.id = response.game.id
   })
 }
@@ -126,7 +126,7 @@ const createGame = function (data) {
 const moves = function (index, value, over) {
   // console.log(app.game.id)
   // let index = event.target.id
-  console.log(app.user.token)
+  // console.log(app.user.token)
   return $.ajax({
     url: app.host + '/games/' + app.game.id, // was just id and then app.game.id (didn't work)
     method: 'PATCH',
@@ -146,7 +146,7 @@ const moves = function (index, value, over) {
 }
 
 const gameViews = function () {
-  console.log(app.user.token)
+  // console.log(app.user.token)
   // console.log(games.length)
   return $.ajax({
     url: app.host + '/games',

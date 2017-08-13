@@ -56,9 +56,9 @@ $('.gameBoard').on('click', ".square:not('.square-x, .square-o')", function (eve
   // const cell = event.target.id
   // console.log(event.target.id)
   const index = $('.square').index(this)
-  console.log($('.square').index(this))
+  // console.log($('.square').index(this))
   const value = ('square-' + playerToken)
-  console.log('square-' + playerToken)
+  // console.log('square-' + playerToken)
 // Swap current player's token and check for win.
   if (playerToken === 'x') {
     playerToken = 'o'
