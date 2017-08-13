@@ -16,16 +16,16 @@ const loadGamePage = function () {
 }
 
 const addUser = function (data) {
-  // console.log(data)
+  console.log(data)
   return $.ajax({
     url: app.host + '/sign-up/',
-    //headers: { 'header': 'Content-Type: application/json' },
+    // headers: { 'header': 'Content-Type: application/json' },
     method: 'POST',
     data: {
-      "credentials" : {
-        "email": data.credentials.email,
-        "password": data.credentials.password,
-        "password_confirmation": data.credentials.password
+      'credentials': {
+        'email': data.credentials.email,
+        'password': data.credentials.password,
+        'password_confirmation': data.credentials.password
       }
     }
   })

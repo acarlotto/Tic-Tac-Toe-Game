@@ -21,12 +21,17 @@ const loadGame = function (event) {
 
 // event handler for registration form
 const registerUser = function (event) {
-  const data = getFormFields(this)
-  // console.log(data)
   event.preventDefault()
-  gameApi.addUser(data)
+  const data = getFormFields(this)
+  // Test that the passwords match
+  if (data.credentials.password !== data.credentials.password_confirmation) {
+    gameUi.onSignupFailure("passwords don't match")
+  // console.log(data)
+  } else {
+    gameApi.addUser(data)
   .then(gameUi.onSignupSuccess)
   .catch(gameUi.onSignupFailure)
+  }
 }
 
 // event handler for login form

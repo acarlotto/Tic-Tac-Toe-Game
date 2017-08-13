@@ -12,7 +12,7 @@ let user
 
 const onSignupSuccess = function () {
   console.log('Signup Successful!')
-  $('#registration').hide()
+  $('#registration').show()
   $('#login').show()
   $('#message').hide()
   $('#errorMessage').hide()
@@ -26,15 +26,15 @@ const onSignupSuccess = function () {
 // }
 
 const onSignupFailure = (error) => {
-  // if (error.status === 400) {
+  if (error.status === 401) {
     console.log(error)
     console.log('There was problem signing up, please try again!')
     $('#errorMessage').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + 'Passwords do not match or username is already taken. Try again!' + ' </p></div>')
-
-  // } else if {
-  //  setMessage()
+  } else {
+    console.log('There was problem signing up, please try again!***')
+    $('#errorMessage').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + 'Passwords do not match or username is already taken. Try again!' + ' </p></div>')
+  }
 }
-// }
 
 const onSigninSuccess = function (data) {
   console.log(app)
