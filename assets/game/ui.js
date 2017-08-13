@@ -120,6 +120,8 @@ const onLogoutSuccess = function () {
   $('#gameMessage').hide()
   $('#gameMessage').removeData()
   $('#message').removeData()
+  $('#xWin').empty()
+  $('#oWin').empty()
   $('#log-out').on("click", function () {
     // $('#oWin').removeClass('oWin')
     // $('#gameMessage').removeClass('gameMessage')
@@ -179,7 +181,8 @@ const onGetGameSuccess = function (data) {
   $('#passChange').hide()
   $('#gameMessage').show()
   $('#message').show()
-  $('#gameMessage').removeData()
+  $('#gameMessage').empty()
+  $('#errorMessage').empty()
   // $('#oWin').show()
   // $('#message').hide()
   // $('#passChange').show()
