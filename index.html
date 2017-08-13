@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic Tac Toe</title>
+      <!-- Bootstrap -->
+      <link rel="stylesheet" type="text/css" href="assets/styles/index.scss">
+
+
+    <!-- Do not add `link` tags unless you know what you are doing -->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <link href="https://fonts.googleapis.com/css?family=Love+Ya+Like+A+Sister|Sedgwick+Ave+Display|Source+Serif+Pro" rel="stylesheet">
+      <!-- Do not add `script` tags unless you know what you are doing -->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+
+    </head>
+
+    <body class="container-fluid">
+
+      <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">O won <strong id="oWin" class="owin_times"> __ </strong> time(s)</a></li>
+        <li class="active"><a href="#">X won <strong id="xWin" class="xwin_times"> __ </strong> time(s)</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">
+        Best Tic Tac Toe Game Ever!
+        </button></li>
+
+          </ul>
+          <!-- Button trigger modal -->
+
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+ <message>
+<div class="content">
+<!--<div class = "buttons">-->
+  <div class="title">TIC TAC TOE</div>
+
+   <form id="registration">
+    <h2> Register To Play </h2>
+    <div class="input-group">
+    <label for="username"> Username </label>
+    <input type="text" name="credentials[email]" placeholder="Email">
+    </div>
+    <div class="input-group">
+    <label for="password"> Password </label>
+    <input type="password" name="credentials[password]" placeholder="Password">
+    </div>
+    <div class="input-group">
+    <label for="password-confirm"> Password </label>
+    <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
+    </div>
+    <input type="submit" name="submit" class="submit" value="Register">
+  </form>
+
+  <div class="row">
+ <form id="login">
+   <h2> Login To Play </h2>
+   <div class="input-group">
+     <label for="username"> Username </label>
+     <input type="text" name="credentials[email]" placeholder="Email">
+   </div>
+   <div class="input-group">
+     <label for="password"> Password </label>
+     <input type="password" name="credentials[password]" placeholder="Password">
+   </div>
+   <input type="submit" name="submit" class="submit" value="Log In">
+ </form>
+
+
+   <form id="passChange">
+     <h2> Change Password </h2>
+     <div class="input-group">
+       <label for="oldPassword"> Old Password </label>
+       <input type="password" name="passwords[old]" placeholder="Old Password">
+     </div>
+     <div class="input-group">
+       <label for="newPassword"> New Password </label>
+       <input type="password" name="passwords[new]" placeholder="New Password">
+     </div>
+     <input type="submit" name="submit" class="submit" value="Change Password">
+   </form>
+
+
+<!--
+   <form id="get-game">
+       <input class="btn btn-lg btn-danger reset-button" type="submit" name="submit" value="Get Game">
+   </form>-->
+
+   <form id="update" hidden>
+          <input id="index" name="game[index]" type="text" value="">
+<!-- $('#index').val(+$(this).attr('id'))-->
+          <input id="value" name="game[value]" type="text" value="">
+<!--$('#value').val(playerToken)-->>
+          <input id="over" name="game[over]" type="text" value="">
+<!--$('#over').val('true') -->
+        </form>
+
+</div>
+
+     <!-- <form id="get-game">
+       <input type="submit" name="submit" class="submit" value="Get Game"></input>
+     </form>-->
+
+
+</div>
+
+  <div id="errorMessage"></div>
+  <div id="gameMessage"></div>
+  <div id="yayMessage"></div>
+  <div id="changePasswordMessage"></div>
+
+<div class = "content">
+  <button class="btn" id="play-game" class="btn-success btn span12"> New Game</button>      <button class="btn" id="log-out"> Log Out </button>     <button class="btn" id="passChangeButton">Change Password</button>
+
+
+  <div id="message"></div>
+</div>
+
+
+
+
+  <div class="gameBoard" id=board>
+  <div class="row">
+    <div class="square" id="r1"></div>
+    <div class="square" id="r2"></div>
+    <div class="square" id="r3"></div>
+  </div>
+
+  <div class="row">
+    <div class="square" id="r4"></div>
+    <div class="square" id="r5"></div>
+    <div class="square" id="r6"></div>
+  </div>
+
+  <div class="row">
+    <div class="square" id="r7"></div>
+    <div class="square" id="r8"></div>
+    <div class="square" id="r9"></div>
+  </div>
+</div>
+
+
+<!--<div class="content"><a href="#" id="reset" class="btn-success btn span12">START NEW GAME</a></div></div>
+-->
+<div class="content">
+<button class="btn" id="view-games"> View Games </button>
+<div>
+</message>
+</div>
+
+<script type="text/javascript" src="assets/scripts/game.js"></script>
+
+    </body>
+</html>
