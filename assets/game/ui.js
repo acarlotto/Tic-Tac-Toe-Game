@@ -47,12 +47,13 @@ const onSigninSuccess = function (data) {
   // hide register
   $('#registration').hide()
   $('#board').hide() // enter the class or id of the particular html element which you wish to hide.
-  $('#view-games').show()
+  $('#view-games').hide()
+  $('#gameMessage').removeData()
+  $('#gameMessage').show()
   $('#play-game').show()
   $('#reset').hide()
   $('#errorMessage').hide()
-  $('#yayMessage').hide()
-  $('#gameMessage').hide()
+  // $('#yayMessage').show()
   // $('#message').show()
   $('#log-out').show()
   $('#passChange').hide()
@@ -117,6 +118,7 @@ const onLogoutSuccess = function () {
   $('#yayMessage').hide()
   $('#passChangeButton').hide()
   $('#gameMessage').hide()
+  $('#gameMessage').removeData()
   $('#message').removeData()
   $('#log-out').on("click", function () {
     // $('#oWin').removeClass('oWin')
@@ -177,6 +179,7 @@ const onGetGameSuccess = function (data) {
   $('#passChange').hide()
   $('#gameMessage').show()
   $('#message').show()
+  $('#gameMessage').removeData()
   // $('#oWin').show()
   // $('#message').hide()
   // $('#passChange').show()
