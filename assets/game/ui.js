@@ -30,9 +30,11 @@ const onSignupFailure = (error) => {
     // console.log(error)
     // console.log('There was problem signing up, please try again!')
     $('#errorMessage').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + 'Passwords do not match or username is already taken. Try again!' + ' </p></div>')
+    $('#errorMessage').show()
   } else {
     // console.log('There was problem signing up, please try again!***')
     $('#errorMessage').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + 'Passwords do not match or username is already taken. Try again!' + ' </p></div>')
+    $('#errorMessage').show()
   }
 }
 
