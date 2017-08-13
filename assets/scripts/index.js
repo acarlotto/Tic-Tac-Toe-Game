@@ -32,10 +32,11 @@ $(() => {
     $('#play-game').hide()
     $('#log-out').hide()
     $('#reset').hide()
-    $('#message').show()
+    $('#message').hide()
     $('#view-games').on('click', gameEvents.viewGames)
     $('#passChange').hide()
     $('#passChangeButton').hide()
+    $('#errorMessage').show()
   })
   // $('#content').on(submit, gameEvents.loadGame) // might have to delete
   // $('#update').on('submit', gameEvents.updateGameStates)

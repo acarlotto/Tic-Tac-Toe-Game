@@ -13,7 +13,7 @@ The tic tac toe app functions as a single page application using HTML and CSS wi
 
 # Unsolved problems that will be fixed in next release
 - Design - would like to add to the design in the future.
-- Once a message is displayed wheter error or not the message stays throughout the users experience until the screen is refreshed.
+- Once a message is displayed whether error message or other... the message stays throughout the users experience until the screen is refreshed.
 
 # Wireframes and User Stories
 

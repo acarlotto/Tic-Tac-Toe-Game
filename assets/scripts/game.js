@@ -162,7 +162,7 @@ const checkIfPlayerWon = function (symbol) {
   } else if (count === 9) {
     // updateGame()
     $('#over').val('true')
-    setMessage('Tie Game')
+    setMessage('Tie Game!')
     $('.gameBoard').removeClass('disable')
     $('.square').removeClass('square-o')
     $('.square').removeClass('square-x')
@@ -178,7 +178,7 @@ const setMessage = function (msg) {
   document.getElementById('message').innerText = msg
 }
 
-$('#reset').click(function () {
+$('#play-game').click(function () {
   $('.square').addClass('.square:before')
   $('#message').addClass('#message:before')
   $('.gameBoard').removeClass('disable')

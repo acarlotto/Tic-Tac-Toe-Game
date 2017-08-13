@@ -110,7 +110,7 @@ const totalGamesPlayed = function (event) {
   gameApi.getIndex()
     .then((response) => {
       store.games = response.games
-      $('#setMessage').text('You battled ' + store.games.length + ' many times.')
+      // $('#setMessage').text('You battled ' + store.games.length + ' many times.')
       return store.games.length
     })
     .then(gameUi.success)
