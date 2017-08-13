@@ -114,7 +114,7 @@ const onLogoutSuccess = function () {
   $('#log-out').hide()
   $('.play').hide()
   $('#message').hide()
-  // $('#errorMessage').hide()
+  $('#errorMessage').show()
   $('#yayMessage').hide()
   $('#passChangeButton').hide()
   $('#gameMessage').hide()
