@@ -53,7 +53,7 @@ const onSigninSuccess = function (data) {
   $('#play-game').show()
   $('#reset').hide()
   $('#errorMessage').hide()
-  // $('#yayMessage').show()
+  $('#yayMessage').hide()
   // $('#message').show()
   $('#log-out').show()
   $('#passChange').hide()
