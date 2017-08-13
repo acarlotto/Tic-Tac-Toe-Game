@@ -115,7 +115,7 @@ const updateGame = function (cell, over) {
     // $('#index').val(+$(this).attr('id'))
     gameEvents.updateGameStates(index, value, over)
   }
-}
+} // change
 */
 const checkIfPlayerWon = function (symbol) {
   if ($('#r1').hasClass('square-x') && $('#r2').hasClass('square-x') && $('#r3').hasClass('square-x') ||
