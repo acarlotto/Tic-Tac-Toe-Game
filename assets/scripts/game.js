@@ -180,14 +180,25 @@ const setMessage = function (msg) {
 
 $('#play-game').click(function () {
   $('.square').addClass('.square:before')
-  $('#message').addClass('#message:before')
+  // $('#message').addClass('#message:before')
   $('.gameBoard').removeClass('disable')
   $('.square').removeClass('square-o')
   $('.square').removeClass('square-x')
   $('#message').removeClass('message')
+  // $('.xwin_times').removeClass('xWin')
+  // $('.owin_times').removeClass('oWin')
   count = 0
   playerToken = 'x'
   setMessage('x\'s Turn')
+})
+
+$('#log-out').click(function () {
+  // $('#oWin').addClass('owin_times')
+  // $('.square').addClass('.square:before')#message:before
+  $('#oWin').removeClass('oWin')
+  // $('#message').addClass('message:before')
+  $('#message').removeClass('message')
+  // $('#message').removeClass('message:before')
 })
 
 module.exports = {

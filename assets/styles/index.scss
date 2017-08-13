@@ -90,8 +90,8 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   font-size: 30px;
 }
 
-#message::before {
-  content:" ";
+#message:before {
+  content:"";
   color: #052F4C;
   align-content: center;
   text-transform: uppercase;

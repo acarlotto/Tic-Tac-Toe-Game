@@ -52,7 +52,7 @@ const resetPassword = function (event) {
 }
 
 const logoutUser = function (event) {
-  // const data = getFormFields(this)
+  const data = getFormFields(this)
   event.preventDefault()
   gameApi.userLogout()
   .then(gameUi.onLogoutSuccess)
