@@ -14,10 +14,11 @@ const onSignupSuccess = function () {
   console.log('Signup Successful!')
   $('#registration').hide()
   $('#login').show()
-  $('#message').show()
-  $('#errorMessage').show()
+  $('#message').hide()
+  $('#errorMessage').hide()
   $('#board').hide()
-  $('message').prepend('<div class="row" style="text-align: center; color: black"> <p>You are now signed up. Login. </p></div>')
+  $('#yayMessage').prepend('<div class="row" style="text-align: center; color: black"> <p>You are now signed up. Login. </p></div>')
+  $('#yayMessage').show()
 }
 
 // const onSignupFailure = function (error) {
@@ -50,6 +51,8 @@ const onSigninSuccess = function (data) {
   $('#play-game').show()
   $('#reset').hide()
   $('#errorMessage').hide()
+  $('#yayMessage').hide()
+  $('#gameMessage').show()
   $('#message').show()
   $('#log-out').show()
   $('#passChange').hide()
@@ -64,6 +67,7 @@ const onSigninFailure = (error) => {
   if (error.status === 401) {
     $('#errorMessage').prepend('<div class="row" style="text-align: center; color: red"> <p> ' + 'Invalid username or password.' + ' </p></div>')
     console.log('Invalid username or password.')
+    $('#errorMessage').show()
   } else {
     displayErrorMessage()
   }
@@ -81,12 +85,14 @@ const updateGameStatesFail = function (index, value) {
 
 const onResetSuccess = function () {
   console.log('Password Reset Successfully')
-  $('errorMessage').prepend('<div class="row" style="text-align: center; color: red"> <p>Password Reset Successfully</p></div>')
+  $('#changePasswordMessage').prepend('<div class="row" style="text-align: center; color: red"> <p>Password Reset Successfully</p></div>')
+  $('#changePasswordMessage').show()
   // $('#content').load('http://localhost:7165/index.html')
 }
 
 const onResetFailure = function () {
-  $('errorMessage').prepend('<div class="row" style="text-align: center; color: red"> <p>Invalid Password.</p></div>')
+  $('#changePasswordMessage').prepend('<div class="row" style="text-align: center; color: red"> <p>Invalid Password. Old password is not correct.</p></div>')
+  $('#changePasswordMessage').show()
 }
 
 const onLogoutSuccess = function () {
@@ -106,7 +112,9 @@ const onLogoutSuccess = function () {
   $('.play').hide()
   $('#message').hide()
   $('#errorMessage').hide()
+  $('#yayMessage').hide()
   $('#passChangeButton').hide()
+  $('#gameMessage').hide()
 }
 
 const onLogoutFailure = function (error) {
@@ -154,7 +162,10 @@ const onGetGameSuccess = function (data) {
   $('#view-games').show()
   $('#play-game').show()
   $('#log-out').show()
-  $('#errorMessage').show()
+  $('#errorMessage').hide()
+  $('#gameMessage').show()
+  $('#changePasswordMessage').hide()
+  $('#passChange').hide()
   // $('#message').hide()
   // $('#passChange').show()
   // $('#main').hide()
@@ -172,7 +183,7 @@ const onViewSuccess = function (data) {
   // assign variable to game data array
   let games = data.games
   let totalNumber = games.length
-  $('#errorMessage').prepend('<div class="row" style="text-align: center; color: black"> <p>You have played ' + totalNumber + ' Games!!</p></div>')
+  $('#gameMessage').prepend('<div class="row" style="text-align: center; color: black"> <p>You have played ' + totalNumber + ' Games!!</p></div>')
   // hide view button and change password form
   // $('#view-games').hide()
   // $('#change-password').hide()
